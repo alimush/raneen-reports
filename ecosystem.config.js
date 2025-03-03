@@ -5,7 +5,7 @@ module.exports = {
       cwd: "./", // Ensure this points to your project root
       env: {
         NODE_ENV: "production",
-        PORT: 9090, // Specify the port if needed
+        PORT: 3000, // Specify the port if needed
       },
       error_file: "logs/err.log",
       out_file: "logs/out.log",
