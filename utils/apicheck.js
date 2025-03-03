@@ -1,36 +1,28 @@
 import axios from 'axios';
 
-const createApi = () => {
-  const apiUrl = typeof window !== 'undefined' ? window.localStorage.getItem('apiUrl') : null;
+// Create a function to get the API instance with the latest localStorage values
+const getApi = () => {
+  let apiUrl = typeof window !== 'undefined' ? window.localStorage.getItem('apiUrl') : null;
+  let token = typeof window !== 'undefined' ? window.localStorage.getItem('token') : null;
   
-  const api = axios.create({
-    baseURL: apiUrl ? `${apiUrl}AdminRoleList/admin/roles` : '/api', // Fallback to a relative path
+  // Create a fresh instance with the latest config
+  const instance = axios.create({
+    baseURL: apiUrl ? `${apiUrl}AdminRoleList/admin/roles` : '/api',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {})
     }
   });
-
-  // Add a request interceptor to include the JWT token in every request
-  api.interceptors.request.use(
-    config => {
-      if (typeof window !== 'undefined') {
-        const token = window.localStorage.getItem('token');
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-      }
-      return config;
-    },
-    error => Promise.reject(error)
-  );
-
-  return api;
+  
+  return instance;
 };
 
-let api;
-
-if (typeof window !== 'undefined') {
-  api = createApi();
-}
+// Export a proxy object that creates a fresh api instance for each request
+const api = new Proxy({}, {
+  get: function(target, prop) {
+    const apiInstance = getApi();
+    return apiInstance[prop];
+  }
+});
 
 export default api;
