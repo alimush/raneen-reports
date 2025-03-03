@@ -24,15 +24,33 @@ const boxes = [
 const Page = () => {
   const [rolePermissions, setRolePermissions] = useState([]);
   const router = useRouter();
-  const { roles, loading, error } = useRoles();
+  const { roles, loading, error, refetchRoles } = useRoles();
 
   useEffect(() => {
-    console.log('Roles in Home:', roles); // Debug log
-    if (!loading && roles && roles.length > 0) {
-      console.log('Setting permissions:', roles[0].permissions); // Debug log
+    // If we've just logged in and don't have roles yet, try to refetch
+    if (!loading && (!roles || roles.length === 0)) {
+      console.log('No roles found, attempting to refetch...');
+      refetchRoles();
+    }
+    
+    // Check if roles exists and has permissions
+    if (!loading && roles && roles.length > 0 && roles[0].permissions) {
+      console.log('Setting permissions:', roles[0].permissions);
       setRolePermissions(roles[0].permissions || []);
     }
-  }, [roles, loading]);
+  }, [roles, loading, refetchRoles]);
+
+  // Retry mechanism if permissions are empty
+  useEffect(() => {
+    if (!loading && rolePermissions.length === 0) {
+      const timer = setTimeout(() => {
+        console.log('No permissions detected, retrying...');
+        refetchRoles();
+      }, 2000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [rolePermissions, loading, refetchRoles]);
 
   const handleBoxClick = (link) => {
     router.push(link);
@@ -50,21 +68,34 @@ const Page = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-red-500">Error: {error}</div>
+      <div className="flex justify-center items-center h-screen flex-col">
+        <div className="text-red-500 mb-4">Error: {error}</div>
+        <button 
+          onClick={() => refetchRoles()} 
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Retry
+        </button>
       </div>
     );
   }
 
+  // If we have no roles data after loading is complete, show a message with a retry button
   if (!roles || roles.length === 0) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-gray-500">No roles available</div>
+      <div className="flex justify-center items-center h-screen flex-col">
+        <div className="text-gray-500 mb-4">No roles available. Please try again.</div>
+        <button 
+          onClick={() => refetchRoles()} 
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Retry
+        </button>
       </div>
     );
   }
 
-  console.log('Rendering boxes with permissions:', rolePermissions); // Debug log
+  console.log('Rendering boxes with permissions:', rolePermissions);
 
   return (
     <div className="flex justify-center items-center flex-1 bg-gray-100 min-h-screen">
