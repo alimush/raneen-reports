@@ -1,0 +1,58 @@
+2025-02-01T08:45:46: Error creating A/R Invoice: {
+2025-02-01T08:45:46:   error: {
+2025-02-01T08:45:46:     code: -5002,
+2025-02-01T08:45:46:     message: {
+2025-02-01T08:45:46:       lang: 'en-us',
+2025-02-01T08:45:46:       value: " [DocumentLines.ItemCode][line: 2] , 'Business partner catalog number linked to item not specified as sales item (2)'"
+2025-02-01T08:45:46:     }
+2025-02-01T08:45:46:   }
+2025-02-01T08:45:46: }
+2025-02-01T09:52:58: ^C
+2025-02-01T09:52:58: ^C
+2025-02-01T09:53:09: ^C
+2025-02-01T09:53:09: ^C
+2025-02-02T08:20:50: Error creating A/R Invoice: {
+2025-02-02T08:20:50:   error: {
+2025-02-02T08:20:50:     code: -5002,
+2025-02-02T08:20:50:     message: {
+2025-02-02T08:20:50:       lang: 'en-us',
+2025-02-02T08:20:50:       value: '10000100 - Document total value must be zero or greater than zero'
+2025-02-02T08:20:50:     }
+2025-02-02T08:20:50:   }
+2025-02-02T08:20:50: }
+2025-02-02T08:21:14: Error cancelling quotation: {
+2025-02-02T08:21:14:   error: {
+2025-02-02T08:21:14:     code: -5006,
+2025-02-02T08:21:14:     message: {
+2025-02-02T08:21:14:       lang: 'en-us',
+2025-02-02T08:21:14:       value: 'Document is already closed and cannot be canceled.'
+2025-02-02T08:21:14:     }
+2025-02-02T08:21:14:   }
+2025-02-02T08:21:14: }
+2025-02-02T08:50:55: Error fetching invoice details: {
+2025-02-02T08:50:55:   error: {
+2025-02-02T08:50:55:     code: -2028,
+2025-02-02T08:50:55:     message: { lang: 'en-us', value: 'No matching records found (ODBC -2028)' }
+2025-02-02T08:50:55:   }
+2025-02-02T08:50:55: }
+2025-02-02T08:50:57: Error fetching invoice details: {
+2025-02-02T08:50:57:   error: {
+2025-02-02T08:50:57:     code: -2028,
+2025-02-02T08:50:57:     message: { lang: 'en-us', value: 'No matching records found (ODBC -2028)' }
+2025-02-02T08:50:57:   }
+2025-02-02T08:50:57: }
+2025-02-02T08:51:13: Error fetching invoice details: {
+2025-02-02T08:51:13:   error: {
+2025-02-02T08:51:13:     code: -2028,
+2025-02-02T08:51:13:     message: { lang: 'en-us', value: 'No matching records found (ODBC -2028)' }
+2025-02-02T08:51:13:   }
+2025-02-02T08:51:13: }
+2025-02-08T10:29:46: Error creating A/R Invoice: {
+2025-02-08T10:29:46:   error: {
+2025-02-08T10:29:46:     code: -10,
+2025-02-08T10:29:46:     message: {
+2025-02-08T10:29:46:       lang: 'en-us',
+2025-02-08T10:29:46:       value: '10001071 - Customer IBG02805 is inactive '
+2025-02-08T10:29:46:     }
+2025-02-08T10:29:46:   }
+2025-02-08T10:29:46: }

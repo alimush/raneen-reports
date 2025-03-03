@@ -1,0 +1,47 @@
+{
+  "name": "admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.0.4",
+    "@mapbox/node-pre-gyp": "^1.0.11",
+    "aws-sdk": "^2.1641.0",
+    "axios": "^1.7.2",
+    "date-fns": "^3.6.0",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^11.2.10",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
+    "lodash": "^4.17.21",
+    "lucide-react": "^0.424.0",
+    "mysql2": "^3.11.3",
+    "next": "^14.2.14",
+    "odbc": "^2.4.9",
+    "qrcode": "^1.5.4",
+    "react": "^18",
+    "react-awesome-button": "^7.0.5",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.13.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-select": "^5.8.0",
+    "react-table": "^7.8.0",
+    "react-toastify": "^10.0.6",
+    "recharts": "^2.12.7",
+    "sass": "^1.77.8",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "html-loader": "^5.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}

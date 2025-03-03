@@ -1,0 +1,397 @@
+.aws-btn {
+    --button-default-height: 51px;
+    --button-default-font-size: 16px;
+    --button-default-border-radius: 25px;
+    --button-horizontal-padding: 21px;
+    --button-raise-level: 7px;
+    --button-hover-pressure: 2;
+    --transform-speed: 0.185s;
+    --button-text-color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .aws-btn2 {
+    --button-default-height: 45px;
+    --button-default-font-size: 16px;
+    --button-default-border-radius: 25px;
+    --button-horizontal-padding: 21px;
+    --button-raise-level: 7px;
+    --button-hover-pressure: 2;
+    --transform-speed: 0.185s;
+    --button-text-color: #FFFFFF;
+    font-weight: 600;
+  }
+  
+  /* Activate Button */
+  .aws-btn-activate {
+    --button-primary-color: #10B981;
+    --button-primary-color-dark: #059669;
+    --button-primary-color-light: #D1FAE5;
+    --button-primary-color-hover: #047857;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Post Button */
+  .aws-btn-post {
+    --button-primary-color: #3B82F6;
+    --button-primary-color-dark: #2563EB;
+    --button-primary-color-light: #DBEAFE;
+    --button-primary-color-hover: #1D4ED8;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Cancel Button */
+  .aws-btn-cancel {
+    --button-primary-color: #EF4444;
+    --button-primary-color-dark: #DC2626;
+    --button-primary-color-light: #FEE2E2;
+    --button-primary-color-hover: #B91C1C;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Info Button */
+  .aws-btn-info {
+    --button-primary-color: #3B82F6;
+    --button-primary-color-dark: #2563EB;
+    --button-primary-color-light: #DBEAFE;
+    --button-primary-color-hover: #1D4ED8;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Warning Button */
+  .aws-btn-warning {
+    --button-primary-color: #F59E0B;
+    --button-primary-color-dark: #D97706;
+    --button-primary-color-light: #FEF3C7;
+    --button-primary-color-hover: #B45309;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Success Button */
+  .aws-btn-success {
+    --button-primary-color: #10B981;
+    --button-primary-color-dark: #059669;
+    --button-primary-color-light: #D1FAE5;
+    --button-primary-color-hover: #047857;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+  }
+  
+  /* Disabled Button */
+  .aws-btn-disabled {
+    --button-primary-color: #9CA3AF;
+    --button-primary-color-dark: #6B7280;
+    --button-primary-color-light: #F3F4F6;
+    --button-primary-color-hover: #9CA3AF;
+    --button-primary-border: none;
+    --button-text-color: #FFFFFF;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Sunset Gradient */
+.aws-btn-sunset {
+  --button-primary-color: linear-gradient(135deg, #ff6b6b, #ffa502);
+  --button-primary-color-dark: linear-gradient(135deg, #ee5253, #ff9f43);
+  --button-primary-color-light: #ffeaa7;
+  --button-primary-color-hover: linear-gradient(135deg, #ff4757, #ffc048);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* Ocean Gradient */
+.aws-btn-ocean {
+  --button-primary-color: linear-gradient(135deg, #0652DD, #1CD8D2);
+  --button-primary-color-dark: linear-gradient(135deg, #1B1464, #0652DD);
+  --button-primary-color-light: #E0F7FA;
+  --button-primary-color-hover: linear-gradient(135deg, #0652DD, #48DBFB);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* Forest Gradient */
+.aws-btn-forest {
+  --button-primary-color: linear-gradient(135deg, #38ef7d, #11998e);
+  --button-primary-color-dark: linear-gradient(135deg, #0F9B0F, #1E9600);
+  --button-primary-color-light: #E8F5E9;
+  --button-primary-color-hover: linear-gradient(135deg, #3BAD6E, #26A65B);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* Lavender Gradient */
+.aws-btn-lavender {
+  --button-primary-color: linear-gradient(135deg, #DA22FF, #9733EE);
+  --button-primary-color-dark: linear-gradient(135deg, #8E2DE2, #4A00E0);
+  --button-primary-color-light: #F3E5F5;
+  --button-primary-color-hover: linear-gradient(135deg, #B24592, #7C3AED);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* Cosmic Gradient */
+.aws-btn-cosmic {
+  --button-primary-color: linear-gradient(135deg, #6A3093, #A044FF);
+  --button-primary-color-dark: linear-gradient(135deg, #5B247A, #8E44AD);
+  --button-primary-color-light: #E8EAF6;
+  --button-primary-color-hover: linear-gradient(135deg, #7B4397, #9F6EFF);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 1. Citrus Burst */
+.aws-btn-citrus {
+  --button-primary-color: linear-gradient(135deg, #FFA500, #FFFF00);
+  --button-primary-color-dark: linear-gradient(135deg, #FF8C00, #FFD700);
+  --button-primary-color-light: #FFFACD;
+  --button-primary-color-hover: linear-gradient(135deg, #FF7F50, #FFFF00);
+  --button-primary-border: none;
+  --button-text-color: #333333;
+}
+
+/* 2. Berry Blast */
+.aws-btn-berry {
+  --button-primary-color: linear-gradient(135deg, #8E44AD, #C0392B);
+  --button-primary-color-dark: linear-gradient(135deg, #6C3483, #922B21);
+  --button-primary-color-light: #F2D7D5;
+  --button-primary-color-hover: linear-gradient(135deg, #9B59B6, #E74C3C);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 3. Mint Breeze */
+.aws-btn-mint {
+  --button-primary-color: linear-gradient(135deg, #2ecc71, #1abc9c);
+  --button-primary-color-dark: linear-gradient(135deg, #27ae60, #16a085);
+  --button-primary-color-light: #E0F2F1;
+  --button-primary-color-hover: linear-gradient(135deg, #48c9b0, #2ecc71);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 4. Flamingo */
+.aws-btn-flamingo {
+  --button-primary-color: linear-gradient(135deg, #FF9A8B, #FF6A88);
+  --button-primary-color-dark: linear-gradient(135deg, #FF8E9E, #FF5E78);
+  --button-primary-color-light: #FFE4E1;
+  --button-primary-color-hover: linear-gradient(135deg, #FFAC8E, #FF8177);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 5. Electric Violet */
+.aws-btn-electric {
+  --button-primary-color: linear-gradient(135deg, #4776E6, #8E54E9);
+  --button-primary-color-dark: linear-gradient(135deg, #3A5FCD, #7B3FE4);
+  --button-primary-color-light: #E6E6FA;
+  --button-primary-color-hover: linear-gradient(135deg, #5E88FC, #A56FFF);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 6. Autumn Glow */
+.aws-btn-autumn {
+  --button-primary-color: linear-gradient(135deg, #F2994A, #F2C94C);
+  --button-primary-color-dark: linear-gradient(135deg, #E67E22, #F1C40F);
+  --button-primary-color-light: #FFF8E1;
+  --button-primary-color-hover: linear-gradient(135deg, #FFB347, #FFCF4B);
+  --button-primary-border: none;
+  --button-text-color: #4A4A4A;
+}
+
+/* 7. Deep Space */
+.aws-btn-deepspace {
+  --button-primary-color: linear-gradient(135deg, #000000, #434343);
+  --button-primary-color-dark: linear-gradient(135deg, #232526, #414345);
+  --button-primary-color-light: #E0E0E0;
+  --button-primary-color-hover: linear-gradient(135deg, #1F1C2C, #4B4B4B);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 8. Tropical Paradise */
+.aws-btn-tropical {
+  --button-primary-color: linear-gradient(135deg, #1FA2FF, #12D8FA, #A6FFCB);
+  --button-primary-color-dark: linear-gradient(135deg, #0288D1, #00BCD4, #80CBC4);
+  --button-primary-color-light: #E0F7FA;
+  --button-primary-color-hover: linear-gradient(135deg, #00C6FF, #0072FF, #00FFBA);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 9. Cherry Blossom */
+.aws-btn-cherry {
+  --button-primary-color: linear-gradient(135deg, #FFC0CB, #FF69B4);
+  --button-primary-color-dark: linear-gradient(135deg, #FFB6C1, #FF1493);
+  --button-primary-color-light: #FFF0F5;
+  --button-primary-color-hover: linear-gradient(135deg, #FFD1DC, #FF78BB);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 10. Northern Lights */
+.aws-btn-northern {
+  --button-primary-color: linear-gradient(135deg, #4CAF50, #2196F3);
+  --button-primary-color-dark: linear-gradient(135deg, #388E3C, #1976D2);
+  --button-primary-color-light: #E8F5E9;
+  --button-primary-color-hover: linear-gradient(135deg, #66BB6A, #42A5F5);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 11. Desert Sand */
+.aws-btn-desert {
+  --button-primary-color: linear-gradient(135deg, #F4A261, #E76F51);
+  --button-primary-color-dark: linear-gradient(135deg, #E9C46A, #E76F51);
+  --button-primary-color-light: #FFEFD5;
+  --button-primary-color-hover: linear-gradient(135deg, #F3B562, #F07A5A);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 12. Mystic Moon */
+.aws-btn-mystic {
+  --button-primary-color: linear-gradient(135deg, #2C3E50, #4CA1AF);
+  --button-primary-color-dark: linear-gradient(135deg, #1C2833, #2E86C1);
+  --button-primary-color-light: #E0EAFC;
+  --button-primary-color-hover: linear-gradient(135deg, #34495E, #5DADE2);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 13. Strawberry Daiquiri */
+.aws-btn-strawberry {
+  --button-primary-color: linear-gradient(135deg, #FF0844, #FFB199);
+  --button-primary-color-dark: linear-gradient(135deg, #D50000, #FF8A65);
+  --button-primary-color-light: #FFEBEE;
+  --button-primary-color-hover: linear-gradient(135deg, #FF1744, #FFC2A1);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 14. Emerald Dream */
+.aws-btn-emerald {
+  --button-primary-color: linear-gradient(135deg, #02AABB, #00CDAC);
+  --button-primary-color-dark: linear-gradient(135deg, #018C9A, #00A88B);
+  --button-primary-color-light: #E0F7FA;
+  --button-primary-color-hover: linear-gradient(135deg, #03C4D1, #00E6BF);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 15. Royal Elegance */
+.aws-btn-royal {
+  --button-primary-color: linear-gradient(135deg, #141E30, #243B55);
+  --button-primary-color-dark: linear-gradient(135deg, #0F1724, #1C2E45);
+  --button-primary-color-light: #E3F2FD;
+  --button-primary-color-hover: linear-gradient(135deg, #1A2A43, #2C4D6E);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 16. Bubblegum Pop */
+.aws-btn-bubblegum {
+  --button-primary-color: linear-gradient(135deg, #FF77E9, #FF9CEE);
+  --button-primary-color-dark: linear-gradient(135deg, #FF5FD6, #FF8AE1);
+  --button-primary-color-light: #FCE4EC;
+  --button-primary-color-hover: linear-gradient(135deg, #FF8AF0, #FFB0F4);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 17. Golden Hour */
+.aws-btn-golden {
+  --button-primary-color: linear-gradient(135deg, #F9D423, #FF4E50);
+  --button-primary-color-dark: linear-gradient(135deg, #F2C94C, #F24B4B);
+  --button-primary-color-light: #FFF8E1;
+  --button-primary-color-hover: linear-gradient(135deg, #FADA5E, #FF6B6B);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 18. Frozen Tundra */
+.aws-btn-frozen {
+  --button-primary-color: linear-gradient(135deg, #7DE2FC, #B9B6E5);
+  --button-primary-color-dark: linear-gradient(135deg, #5DCBF5, #A3A0D8);
+  --button-primary-color-light: #E1F5FE;
+  --button-primary-color-hover: linear-gradient(135deg, #89E8FF, #C5C2ED);
+  --button-primary-border: none;
+  --button-text-color: #333333;
+}
+
+/* 19. Volcanic Ash */
+.aws-btn-volcanic {
+  --button-primary-color: linear-gradient(135deg, #606c88, #3f4c6b);
+  --button-primary-color-dark: linear-gradient(135deg, #4B5774, #323C55);
+  --button-primary-color-light: #ECEFF1;
+  --button-primary-color-hover: linear-gradient(135deg, #6E7B9B, #4A5A7D);
+  --button-primary-border: none;
+  --button-text-color: #FFFFFF;
+}
+
+/* 20. Cotton Candy */
+.aws-btn-cottoncandy {
+  --button-primary-color: linear-gradient(135deg, #E0C3FC, #8EC5FC);
+  --button-primary-color-dark: linear-gradient(135deg, #D1A6F9, #77B4F9);
+  --button-primary-color-light: #F3E5F5;
+  --button-primary-color-hover: linear-gradient(135deg, #E6CCFF, #99CCFF);
+  --button-primary-border: none;
+  --button-text-color: #333333;
+}
+  
+  /* Apply text color to button content */
+  .aws-btn-content {
+    color: var(--button-text-color);
+  }
+  
+  /* Hover state text color adjustment */
+  .aws-btn:hover .aws-btn-content {
+    color: #FFFFFF;
+  }
+  
+  /* Additional styles to ensure text visibility */
+  .aws-btn-wrapper {
+    color: var(--button-text-color);
+  }
+  
+  .aws-btn:before {
+    background-color: var(--button-primary-color-dark);
+  }
+  
+  .aws-btn:after {
+    background-color: var(--button-primary-color);
+  }
+
+  .aws-btn-content2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .aws-btn-content2 > * {
+    margin-right: 8px; /* This replaces the need for mr-2 */
+  }
+  
+  .aws-btn-content2 > *:last-child {
+    margin-right: 0;
+  }
+  
+  /* For RTL languages, you might want to add this */
+  .aws-btn-content2.rtl {
+    flex-direction: row-reverse;
+  }
+  
+  .aws-btn-content2.rtl > * {
+    margin-right: 0;
+    margin-left: 8px;
+  }
+  
+  .aws-btn-content2.rtl > *:last-child {
+    margin-left: 0;
+  }
