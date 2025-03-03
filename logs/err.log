@@ -56,3 +56,167 @@
 2025-02-08T10:29:46:     }
 2025-02-08T10:29:46:   }
 2025-02-08T10:29:46: }
+2025-03-03T10:21:14: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:14:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:14:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:14:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:17: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:17:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:17:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:17:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:21: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:21:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:21:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:21:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:24: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:24:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:24:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:24:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:27: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:27:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:27:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:27:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:31: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:31:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:31:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:31:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:34: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:34:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:34:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:34:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:38: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:38:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:38:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:38:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:41: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:41:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:41:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:41:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:45: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:45:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:45:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:45:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:49: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:49:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:49:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:49:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:51: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:51:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:51:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:51:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:55: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:55:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:55:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:55:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:21:58: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:21:58:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:21:58:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:21:58:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:02: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:02:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:02:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:02:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:05: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:05:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:05:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:05:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:08: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:08:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:08:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:08:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:12: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:12:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:12:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:12:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:15: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:15:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:15:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:15:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:18: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:18:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:18:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:18:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:22: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:22:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:22:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:22:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:26: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:26:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:26:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:26:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:29: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:29:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:29:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:29:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:32: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:32:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:32:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:32:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:36: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:36:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:36:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:36:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:39: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:39:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:39:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:39:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:42: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:42:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:42:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:42:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:46:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:46:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:46:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:49: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:49:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:49:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:49:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:53: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:53:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:53:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:53:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:22:56: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:22:56:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:22:56:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:22:56:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:00: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:00:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:00:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:00:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:03: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:03:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:03:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:03:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:06: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:06:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:06:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:06:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:10: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:10:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:10:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:10:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:13: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:13:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:13:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:13:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:17: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:17:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:17:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:17:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:20: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:20:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:20:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:20:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:23: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:23:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:23:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:23:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:27: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:27:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:27:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:27:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-03T10:23:30: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-03T10:23:30:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-03T10:23:30:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-03T10:23:30:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
