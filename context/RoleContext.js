@@ -8,19 +8,42 @@ export const RoleProvider = ({ children }) => {
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const fetchRoles = async (retryCount = 0) => {
     try {
       setLoading(true);
       setError(null);
-      const apiUrl = localStorage.getItem('apiUrl');
+      
+      // Check if API URL exists in localStorage
+      const apiUrl = typeof window !== 'undefined' 
+        ? window.localStorage.getItem('apiUrl') 
+        : null;
+      
       if (!apiUrl) {
-        throw new Error('API URL not found');
+        console.log('API URL not found in localStorage, will retry when available');
+        setLoading(false);
+        return;
       }
-      const response = await api.get('/');
-      console.log('API Response:', response.data);
-      if (response.data && response.data.roles) {
-        setRoles(response.data.roles);
+      
+      // Force api to refresh with the new apiUrl
+      const response = await fetch(`${apiUrl}/AdminRoleList/admin/roles`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('API Response:', data);
+      
+      if (data && data.roles) {
+        setRoles(data.roles);
+        setIsInitialized(true);
       } else {
         throw new Error('Roles data not found in API response');
       }
@@ -37,9 +60,30 @@ export const RoleProvider = ({ children }) => {
     }
   };
 
+  // This useEffect runs on initial mount and when apiUrl changes
   useEffect(() => {
-    fetchRoles();
-  }, []);
+    if (typeof window !== 'undefined') {
+      const apiUrl = window.localStorage.getItem('apiUrl');
+      if (apiUrl) {
+        fetchRoles();
+      }
+      
+      // Set up a listener for localStorage changes
+      const handleStorageChange = () => {
+        if (window.localStorage.getItem('apiUrl') && !isInitialized) {
+          console.log('API URL changed in localStorage, fetching roles');
+          fetchRoles();
+        }
+      };
+      
+      // Check for localStorage changes every second
+      const interval = setInterval(handleStorageChange, 1000);
+      
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [isInitialized]);
 
   console.log('Roles in context:', roles);
 
