@@ -19,7 +19,7 @@ const InputField = ({ icon: Icon, ...props }) => (
 const LoginPage = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [client, setClient] = useState('');
+  const [client, setClient] = useState('300');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,15 +60,15 @@ const LoginPage = () => {
     e.preventDefault();
     setError('');
 
-    let apiUrl = '';
-    if (client === '100') {
-      apiUrl = 'https://l0s8il6g94.execute-api.me-south-1.amazonaws.com/dev/';
-    } else if (client === '300') {
-      apiUrl = 'https://l0s8il6g94.execute-api.me-south-1.amazonaws.com/dev/';
-    } else {
-      setError('Invalid client ID. Please enter either 100 or 300.');
-      return;
-    }
+    let apiUrl = 'https://l0s8il6g94.execute-api.me-south-1.amazonaws.com/dev/';
+    // if (client === '100') {
+    //   apiUrl = 'https://l0s8il6g94.execute-api.me-south-1.amazonaws.com/dev/';
+    // } else if (client === '300') {
+    //   apiUrl = 'https://l0s8il6g94.execute-api.me-south-1.amazonaws.com/dev/';
+    // } else {
+    //   setError('Invalid client ID. Please enter either 100 or 300.');
+    //   return;
+    // }
 
     try {
       const response = await fetch(`${apiUrl}/AdminLogin/login/admin`, {
@@ -181,7 +181,7 @@ const LoginPage = () => {
               </button>
             </div>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6 }}
@@ -198,7 +198,7 @@ const LoginPage = () => {
               placeholder="Enter client ID (100 or 300)"
               required
             />
-          </motion.div>
+          </motion.div> */}
           <AnimatePresence>
             {error && (
               <motion.div
