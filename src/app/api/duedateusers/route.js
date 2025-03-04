@@ -3,12 +3,8 @@ import odbc from 'odbc';
 async function fetchData(query, params = []) {
   const connectionString =
     'DRIVER={HDBODBC};SERVERNODE=hanab2:30015;UID=SYSTEM;PWD=B1admin!;CHAR_AS_UTF8=1';
-  
+
   const connection = await odbc.connect(connectionString);
-
-  // Optionally, set the schema if needed
-  // await connection.query('SET SCHEMA ALUMARAH_LIVE;');
-
   const result = await connection.query(query, params);
   await connection.close();
   return result;
@@ -18,7 +14,7 @@ export async function GET(req) {
   try {
     // Parse query parameters from the URL
     const { searchParams } = new URL(req.url);
-    const dueDate = searchParams.get("dueDate");
+    const dueDate = searchParams.get("dueDate"); // This is 'dueDateTo' in frontend
     const groupName = searchParams.get("groupName");
     const u_paytype = searchParams.get("u_paytype");
 
@@ -26,34 +22,32 @@ export async function GET(req) {
     const filters = [];
     const params = [];
 
-    // Filter by due date if provided; otherwise, use a default
+    // Filter by due date (Less than or equal to)
     if (dueDate) {
-      filters.push(`a."DueDate" < ?`);
+      filters.push(`a."DueDate" <= ?`);
       params.push(dueDate);
-    } else {
-      filters.push(`a."DueDate" < '01.02.2025'`);
     }
-    
+
     // Filter by group name if provided and not "all"
     if (groupName && groupName.toLowerCase() !== "all") {
       filters.push(`a."GroupName" = ?`);
       params.push(groupName);
     }
-    
+
     // Filter by U_paytype if provided
     if (u_paytype) {
       filters.push(`a."U_Paytype" = ?`);
       params.push(u_paytype);
     }
-    
-    // These filters remain as in your original query
+
+    // Ensure only unpaid invoices are fetched
     filters.push(`a."InsTotal" - a."PaidToDate" <> 0`);
     filters.push(`a."Type" = 'SALE'`);
 
-    // Combine the filters into a WHERE clause
-    const whereClause = "WHERE " + filters.join(" AND ");
+    // Construct WHERE clause dynamically
+    const whereClause = filters.length ? "WHERE " + filters.join(" AND ") : "";
 
-    // The main query remains largely the same (including UNION ALL) with the appended where clause.
+    // Main SQL Query
     const sqlQuery = `
       SELECT   a."Type",
                a."GroupName" "الوزارة",
