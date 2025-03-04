@@ -17,12 +17,9 @@ import { FixedSizeList as List } from 'react-window';
 const OuterElementType = React.forwardRef((props, ref) => (
   <tbody ref={ref} {...props} />
 ));
-<<<<<<< HEAD
+
 OuterElementType.displayName = "OuterElementType"; // ✅ Fix the issue
 
-=======
-OuterElementType.displayName = "OuterElementType";
->>>>>>> 432b419fe3b00be50c30dbdd1395378b1bfeeb3d
 
 export default function Inventory_Report() {
   const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
