@@ -11,6 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import CustomAwesomeButton from '../components/CustomAwesomeButton';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { FixedSizeList as List } from 'react-window';
+
+// Custom outer element to use a <tbody> for the virtualized list.
+const OuterElementType = React.forwardRef((props, ref) => (
+  <tbody ref={ref} {...props} />
+));
 
 export default function Inventory_Report() {
   const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
@@ -259,20 +265,31 @@ export default function Inventory_Report() {
                       <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Remaining</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {data.map((item, index) => (
-                      <tr key={index} className="hover:bg-gray-50">
-                        <td className="px-4 py-3 whitespace-nowrap">{item.Type}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["الوزارة"]}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["رمز الساب"]}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["اسم الزبون"]}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["طريقة الدفع"]}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{formatDate(item["تاريخ الاستحقاق"])}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["مبلغ الفاتورة"]}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{item["المتبقي"]}</td>
-                      </tr>
-                    ))}
-                  </tbody>
+                  {/* Using react-window for virtualized rows */}
+                  <List
+                    height={500} // Adjust height as needed
+                    itemCount={data.length}
+                    itemSize={50} // Adjust row height if necessary
+                    width="100%"
+                    outerElementType={OuterElementType}
+                    itemData={data}
+                  >
+                    {({ index, style, data }) => {
+                      const item = data[index];
+                      return (
+                        <tr style={style} className="hover:bg-gray-50">
+                          <td className="px-4 py-3 whitespace-nowrap">{item.Type}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["الوزارة"]}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["رمز الساب"]}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["اسم الزبون"]}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["طريقة الدفع"]}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{formatDate(item["تاريخ الاستحقاق"])}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["مبلغ الفاتورة"]}</td>
+                          <td className="px-4 py-3 whitespace-nowrap">{item["المتبقي"]}</td>
+                        </tr>
+                      );
+                    }}
+                  </List>
                 </table>
               </div>
             )}
