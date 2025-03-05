@@ -12,8 +12,67 @@ import CustomAwesomeButton from '../components/CustomAwesomeButton';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { FixedSizeList as List } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
-// Custom wrapper for virtualization inside <tbody>
+// A helper hook to detect mobile viewport
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return isMobile;
+}
+
+// Shared columns definition
+const columns = [
+  { label: "Type", key: "Type" },
+  { label: "Group Name", key: "الوزارة" },
+  { label: "Customer Code", key: "رمز الساب" },
+  { label: "Customer Name", key: "اسم الزبون" },
+  { label: "Payment Type", key: "طريقة الدفع" },
+  { label: "Due Date", key: "تاريخ الاستحقاق" },
+  { label: "Invoice Total", key: "مبلغ الفاتورة" },
+  { label: "Remaining", key: "المتبقي" }
+];
+
+// Shared date formatter
+const formatDate = (dateString) => dateString ? dateString.substring(0, 10) : '';
+
+// Mobile row renderer: each field is rendered in its own block, label on top
+function MobileRowRenderer({ index, style, data }) {
+  const item = data[index];
+  return (
+    <div style={style} className="p-4 border rounded-md shadow-sm bg-white mb-4">
+      {columns.map((col) => (
+        <div key={col.key} className="flex flex-col mb-2">
+          <span className="text-xs text-gray-500 font-bold">{col.label}</span>
+          <span className="text-sm text-gray-800">
+            {col.key === "تاريخ الاستحقاق" ? formatDate(item[col.key]) : item[col.key]}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Desktop row renderer: table row format
+function DesktopRowRenderer({ index, style, data }) {
+  const item = data[index];
+  return (
+    <tr style={{ ...style, display: 'table-row' }} className="hover:bg-gray-50">
+      {columns.map((col) => (
+        <td key={col.key} className="px-4 py-3 whitespace-nowrap">
+          {col.key === "تاريخ الاستحقاق" ? formatDate(item[col.key]) : item[col.key]}
+        </td>
+      ))}
+    </tr>
+  );
+}
+
+// Custom wrapper for react-window inner element in table (for desktop)
 const OuterElementType = React.forwardRef((props, ref) => (
   <tbody ref={ref} {...props} />
 ));
@@ -22,57 +81,58 @@ OuterElementType.displayName = "OuterElementType";
 export default function Inventory_Report() {
   const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
   const router = useRouter();
+  const isMobile = useIsMobile();
 
-  // State for filter inputs
-  // Remove the dueDateFrom filter and keep the others
+  // State for filter inputs; dueDateFrom is removed.
   const [filters, setFilters] = useState({
     dueDateTo: '',
     groupName: 'all',
     u_paytype: '',
   });
+
+  // Example: give each column a width property
+const columns = [
+  { label: "Type", key: "Type", width: "100px" },
+  { label: "Group Name", key: "الوزارة", width: "150px" },
+  { label: "Customer Code", key: "رمز الساب", width: "120px" },
+  { label: "Customer Name", key: "اسم الزبون", width: "180px" },
+  { label: "Payment Type", key: "طريقة الدفع", width: "120px" },
+  { label: "Due Date", key: "تاريخ الاستحقاق", width: "110px" },
+  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" },
+  { label: "Remaining", key: "المتبقي", width: "130px" },
+];
+
   
   // State for unique filter options
   const [uniqueFilters, setUniqueFilters] = useState({ groups: [], paytypes: [] });
-  // State for the data results
+  // State for data results
   const [data, setData] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
-
-  // Helper function to format date (YYYY-MM-DD)
-  const formatDate = (dateString) => {
-    if (!dateString) return '';
-    return dateString.substring(0, 10);
-  };
 
   // Fetch unique filter options on mount
   useEffect(() => {
     axios.get('/api/list')
-      .then(response => {
-        setUniqueFilters(response.data);
-      })
-      .catch(error => {
+      .then((response) => setUniqueFilters(response.data))
+      .catch((error) => {
         toast.error('Error fetching filter options');
         console.error(error);
       });
   }, []);
 
-  const handleReturn = () => {
-    router.back();
-  };
+  const handleReturn = () => router.back();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFilters(prev => ({ ...prev, [name]: value }));
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSearch = async () => {
-    // Ensure a valid due date is selected (Due Date To)
     if (!filters.dueDateTo) {
       toast.error('Please select a due date.');
       return;
     }
     setLoadingData(true);
     try {
-      // Build query params – note that we send "dueDate" from dueDateTo
       const params = {
         dueDate: filters.dueDateTo,
         groupName: filters.groupName !== 'all' ? filters.groupName : '',
@@ -88,9 +148,50 @@ export default function Inventory_Report() {
     }
   };
 
-  // Export data to Excel using xlsx and file-saver
+  function DesktopGridHeader({ columns }) {
+    return (
+      <div
+        className="bg-gray-100 font-medium text-gray-600"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: columns.map(c => c.width).join(' '),
+        }}
+      >
+        {columns.map((col) => (
+          <div key={col.key} className="px-4 py-3">
+            {col.label}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  
+  function DesktopGridRow({ index, style, data }) {
+    const item = data[index];
+    return (
+      <div
+        style={{
+          ...style,
+          display: 'grid',
+          gridTemplateColumns: columns.map(c => c.width).join(' '),
+        }}
+        className="hover:bg-gray-50"
+      >
+        {columns.map((col) => (
+          <div key={col.key} className="px-4 py-3 whitespace-nowrap">
+            {col.key === "تاريخ الاستحقاق"
+              ? formatDate(item[col.key])
+              : item[col.key]}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  
+
   const exportToExcel = () => {
-    if (!data || data.length === 0) {
+    if (!data.length) {
       toast.error('No data to export');
       return;
     }
@@ -115,113 +216,81 @@ export default function Inventory_Report() {
   if (loadingPermission) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-        >
+        <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}>
           <FaSpinner className="text-4xl text-blue-500" />
         </motion.div>
       </div>
     );
   }
 
-  if (!canCreateStorage) {
-    return <NotAuth />;
-  }
+  if (!canCreateStorage) return <NotAuth />;
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
       className="container mx-auto p-4 bg-gray-50 text-gray-900 min-h-screen"
     >
       <ToastContainer position="top-right" autoClose={3000} />
-
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <CustomAwesomeButton buttonType="electric" onPress={handleReturn} isRTL={true}>
           <div className="flex flex-row items-center">
-            <FaArrowLeft className="mr-2" />
-            رجوع
+            <FaArrowLeft className="mr-2" /> رجوع
           </div>
         </CustomAwesomeButton>
         <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">Inventory Report</h1>
       </div>
-
       {/* Filter Section */}
-      <motion.div
-        className="bg-white p-6 rounded-lg shadow-md"
-        initial={{ y: -10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4 }}
+      <motion.div className="bg-white p-6 rounded-lg shadow-md"
+        initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}
       >
         <h2 className="text-xl font-bold mb-4">Search Filters</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {/* Due Date To */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Due Date To</label>
-            <input
-              type="date"
-              name="dueDateTo"
-              value={filters.dueDateTo}
+            <input type="date" name="dueDateTo" value={filters.dueDateTo}
               onChange={handleInputChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
           </div>
           {/* Group Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Group Name</label>
-            <select
-              name="groupName"
-              value={filters.groupName}
+            <select name="groupName" value={filters.groupName}
               onChange={handleInputChange}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="all">All Groups</option>
               {uniqueFilters.groups.map((item, index) => (
-                <option key={index} value={item.GroupName}>
-                  {item.GroupName}
-                </option>
+                <option key={index} value={item.GroupName}>{item.GroupName}</option>
               ))}
             </select>
           </div>
           {/* Payment Type */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Payment Type</label>
-            <select
-              name="u_paytype"
-              value={filters.u_paytype}
+            <select name="u_paytype" value={filters.u_paytype}
               onChange={handleInputChange}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="">All Payment Types</option>
               {uniqueFilters.paytypes.map((item, index) => (
-                <option key={index} value={item.U_Paytype}>
-                  {item.U_Paytype}
-                </option>
+                <option key={index} value={item.U_Paytype}>{item.U_Paytype}</option>
               ))}
             </select>
           </div>
         </div>
         <div className="mt-6 flex justify-end space-x-4">
           <CustomAwesomeButton buttonType="electric" onPress={handleSearch}>
-            {loadingData && <FaSpinner className="animate-spin mr-2" />}
-            Search
+            {loadingData && <FaSpinner className="animate-spin mr-2" />} Search
           </CustomAwesomeButton>
           <CustomAwesomeButton buttonType="electric" onPress={exportToExcel}>
             Export to Excel
           </CustomAwesomeButton>
         </div>
       </motion.div>
-
       {/* Data Results Section */}
-      <motion.div
-        className="mt-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-8">
         {loadingData ? (
           <div className="flex justify-center items-center py-12">
             <FaSpinner className="animate-spin text-4xl text-blue-500" />
@@ -229,51 +298,50 @@ export default function Inventory_Report() {
         ) : (
           <Fragment>
             {data.length === 0 ? (
-              <p className="text-center text-gray-500 mt-6">
-                No data found. Please adjust your filters.
-              </p>
+              <p className="text-center text-gray-500 mt-6">No data found. Please adjust your filters.</p>
             ) : (
-              <div className="overflow-x-auto shadow rounded-lg bg-white">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-100">
-                    <tr>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Type</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Group Name</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Customer Code</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Customer Name</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Payment Type</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Due Date</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Invoice Total</th>
-                      <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Remaining</th>
-                    </tr>
-                  </thead>
-                  {/* Use react-window for virtualization */}
-                  <List
-                    height={500}
-                    itemCount={data.length}
-                    itemSize={50}
-                    width="100%"
-                    outerElementType={OuterElementType}
-                    itemData={data}
-                  >
-                    {({ index, style, data }) => {
-                      const item = data[index];
-                      return (
-                        <tr key={index} style={style} className="hover:bg-gray-50">
-                          <td className="px-4 py-3 whitespace-nowrap">{item.Type}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["الوزارة"]}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["رمز الساب"]}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["اسم الزبون"]}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["طريقة الدفع"]}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{formatDate(item["تاريخ الاستحقاق"])}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["مبلغ الفاتورة"]}</td>
-                          <td className="px-4 py-3 whitespace-nowrap">{item["المتبقي"]}</td>
-                        </tr>
-                      );
-                    }}
-                  </List>
-                </table>
-              </div>
+              isMobile ? (
+                // Mobile view: render a list of cards using react-window
+                <div className="space-y-4">
+                  <AutoSizer>
+                    {({ height, width }) => (
+                      <List
+                        height={height}
+                        itemCount={data.length}
+                        itemSize={140} // adjust card height as needed
+                        width={width}
+                        itemData={data}
+                      >
+                        {MobileRowRenderer}
+                      </List>
+                    )}
+                  </AutoSizer>
+                </div>
+              ) : (
+                // Desktop view: fixed header with scrollable table body
+<div className="shadow rounded-lg bg-white">
+  {/* Grid Header */}
+  <DesktopGridHeader columns={columns} />
+
+  {/* Virtualized body */}
+  <div style={{ height: '60vh' }}>
+    <AutoSizer>
+      {({ height, width }) => (
+        <List
+          height={height}
+          itemCount={data.length}
+          itemSize={50}  // each row's fixed height
+          width={width}
+          itemData={data}
+        >
+          {DesktopGridRow}
+        </List>
+      )}
+    </AutoSizer>
+  </div>
+</div>
+
+              )
             )}
           </Fragment>
         )}
