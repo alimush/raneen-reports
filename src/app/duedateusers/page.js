@@ -26,22 +26,30 @@ function useIsMobile() {
   return isMobile;
 }
 
-// Shared columns definition
+// Updated columns definition with all fields from the API
 const columns = [
-  { label: "Type", key: "Type" },
-  { label: "Group Name", key: "الوزارة" },
-  { label: "Customer Code", key: "رمز الساب" },
-  { label: "Customer Name", key: "اسم الزبون" },
-  { label: "Payment Type", key: "طريقة الدفع" },
-  { label: "Due Date", key: "تاريخ الاستحقاق" },
-  { label: "Invoice Total", key: "مبلغ الفاتورة" },
-  { label: "Remaining", key: "المتبقي" }
+  { label: "Type", key: "Type", width: "80px" },
+  { label: "Group Name", key: "الوزارة", width: "150px" },
+  { label: "Department", key: "الدائرة", width: "150px" },
+  { label: "Customer Code", key: "رمز الساب", width: "150px" },
+  { label: "Customer Name", key: "اسم الزبون", width: "180px" },
+  { label: "Phone Number", key: "رقم التلفون", width: "140px" },
+  { label: "Customer Number", key: "رقم الساب", width: "120px" },
+  { label: "Invoice Number", key: "رقم الفاتورة", width: "140px" },
+  { label: "Payment Type", key: "طريقة الدفع", width: "120px" },
+  { label: "Invoice Date", key: "تاريخ الفاتورة", width: "110px" },
+  { label: "Due Date", key: "تاريخ الاستحقاق", width: "110px" },
+  { label: "Installment Number", key: "رقم القسط", width: "100px" },
+  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" },
+  { label: "Installment Amount", key: "مبلغ القسط", width: "120px" },
+  { label: "Paid Amount", key: "المبلغ المدفوع", width: "120px" },
+  { label: "Remaining", key: "المتبقي", width: "130px" },
 ];
 
-// Shared date formatter
+// Shared date formatter (formats both invoice date and due date)
 const formatDate = (dateString) => dateString ? dateString.substring(0, 10) : '';
 
-// Mobile row renderer: each field is rendered in its own block, label on top
+// Mobile row renderer: each field is rendered in its own block
 function MobileRowRenderer({ index, style, data }) {
   const item = data[index];
   return (
@@ -50,7 +58,9 @@ function MobileRowRenderer({ index, style, data }) {
         <div key={col.key} className="flex flex-col mb-2">
           <span className="text-xs text-gray-500 font-bold">{col.label}</span>
           <span className="text-sm text-gray-800">
-            {col.key === "تاريخ الاستحقاق" ? formatDate(item[col.key]) : item[col.key]}
+            {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
+              ? formatDate(item[col.key])
+              : item[col.key]}
           </span>
         </div>
       ))}
@@ -65,7 +75,9 @@ function DesktopRowRenderer({ index, style, data }) {
     <tr style={{ ...style, display: 'table-row' }} className="hover:bg-gray-50">
       {columns.map((col) => (
         <td key={col.key} className="px-4 py-3 whitespace-nowrap">
-          {col.key === "تاريخ الاستحقاق" ? formatDate(item[col.key]) : item[col.key]}
+          {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
+            ? formatDate(item[col.key])
+            : item[col.key]}
         </td>
       ))}
     </tr>
@@ -90,24 +102,14 @@ export default function Inventory_Report() {
     u_paytype: '',
   });
 
-  // Example: give each column a width property
-const columns = [
-  { label: "Type", key: "Type", width: "100px" },
-  { label: "Group Name", key: "الوزارة", width: "150px" },
-  { label: "Customer Code", key: "رمز الساب", width: "120px" },
-  { label: "Customer Name", key: "اسم الزبون", width: "180px" },
-  { label: "Payment Type", key: "طريقة الدفع", width: "120px" },
-  { label: "Due Date", key: "تاريخ الاستحقاق", width: "110px" },
-  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" },
-  { label: "Remaining", key: "المتبقي", width: "130px" },
-];
-
-  
   // State for unique filter options
   const [uniqueFilters, setUniqueFilters] = useState({ groups: [], paytypes: [] });
   // State for data results
   const [data, setData] = useState([]);
   const [loadingData, setLoadingData] = useState(false);
+
+  // Compute total width for desktop table by summing fixed column widths
+  const totalWidth = columns.reduce((acc, col) => acc + parseInt(col.width, 10), 0);
 
   // Fetch unique filter options on mount
   useEffect(() => {
@@ -166,7 +168,6 @@ const columns = [
     );
   }
 
-  
   function DesktopGridRow({ index, style, data }) {
     const item = data[index];
     return (
@@ -180,7 +181,7 @@ const columns = [
       >
         {columns.map((col) => (
           <div key={col.key} className="px-4 py-3 whitespace-nowrap">
-            {col.key === "تاريخ الاستحقاق"
+            {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
               ? formatDate(item[col.key])
               : item[col.key]}
           </div>
@@ -188,7 +189,6 @@ const columns = [
       </div>
     );
   }
-  
 
   const exportToExcel = () => {
     if (!data.length) {
@@ -196,13 +196,21 @@ const columns = [
       return;
     }
     const exportData = data.map((item) => ({
-      Type: item.Type,
+      "Type": item.Type,
       "Group Name": item["الوزارة"],
+      "Department": item["الدائرة"],
       "Customer Code": item["رمز الساب"],
       "Customer Name": item["اسم الزبون"],
+      "Phone Number": item["رقم التلفون"],
+      "Customer Number": item["رقم الساب"],
+      "Invoice Number": item["رقم الفاتورة"],
       "Payment Type": item["طريقة الدفع"],
+      "Invoice Date": formatDate(item["تاريخ الفاتورة"]),
       "Due Date": formatDate(item["تاريخ الاستحقاق"]),
+      "Installment Number": item["رقم القسط"],
       "Invoice Total": item["مبلغ الفاتورة"],
+      "Installment Amount": item["مبلغ القسط"],
+      "Paid Amount": item["المبلغ المدفوع"],
       "Remaining": item["المتبقي"],
     }));
     const worksheet = XLSX.utils.json_to_sheet(exportData);
@@ -308,7 +316,7 @@ const columns = [
                       <List
                         height={height}
                         itemCount={data.length}
-                        itemSize={140} // adjust card height as needed
+                        itemSize={150} // adjusted card height for more fields
                         width={width}
                         itemData={data}
                       >
@@ -318,29 +326,28 @@ const columns = [
                   </AutoSizer>
                 </div>
               ) : (
-                // Desktop view: fixed header with scrollable table body
-<div className="shadow rounded-lg bg-white">
-  {/* Grid Header */}
-  <DesktopGridHeader columns={columns} />
-
-  {/* Virtualized body */}
-  <div style={{ height: '60vh' }}>
-    <AutoSizer>
-      {({ height, width }) => (
-        <List
-          height={height}
-          itemCount={data.length}
-          itemSize={50}  // each row's fixed height
-          width={width}
-          itemData={data}
-        >
-          {DesktopGridRow}
-        </List>
-      )}
-    </AutoSizer>
-  </div>
-</div>
-
+                // Desktop view: wrap the table in a horizontal scroll container.
+                <div className="overflow-x-auto">
+                  <div className="shadow rounded-lg bg-white" style={{ minWidth: `${totalWidth}px` }}>
+                    <DesktopGridHeader columns={columns} />
+                    <div style={{ height: '60vh' }}>
+                      {/* Use AutoSizer to get height only */}
+                      <AutoSizer disableWidth>
+                        {({ height }) => (
+                          <List
+                            height={height}
+                            itemCount={data.length}
+                            itemSize={50}  // fixed row height
+                            width={totalWidth}
+                            itemData={data}
+                          >
+                            {DesktopGridRow}
+                          </List>
+                        )}
+                      </AutoSizer>
+                    </div>
+                  </div>
+                </div>
               )
             )}
           </Fragment>
