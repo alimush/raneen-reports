@@ -140,7 +140,7 @@ export default function Inventory_Report() {
         groupName: filters.groupName !== 'all' ? filters.groupName : '',
         u_paytype: filters.u_paytype,
       };
-      const response = await axios.get('/api/duedateusers', { params });
+      const response = await axios.get('/api/duedateBaghdad', { params });
       setData(response.data);
     } catch (error) {
       toast.error('Error fetching data');
@@ -246,7 +246,7 @@ export default function Inventory_Report() {
             <FaArrowLeft className="mr-2" /> رجوع
           </div>
         </CustomAwesomeButton>
-        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">Inventory Report</h1>
+        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">الزبائن المتلكأين بغداد</h1>
       </div>
       {/* Filter Section */}
       <motion.div className="bg-white p-6 rounded-lg shadow-md"

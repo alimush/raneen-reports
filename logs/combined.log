@@ -4278,3 +4278,148 @@
 2025-03-04T14:52:41:  ✓ Starting...
 2025-03-04T14:52:41:  ✓ Ready in 657ms
 2025-03-05T00:01:35: Roles in context: []
+2025-03-05T10:00:19:   ▲ Next.js 14.2.14
+2025-03-05T10:00:19:   - Local:        http://localhost:3000
+2025-03-05T10:00:19: 
+2025-03-05T10:00:19:  ✓ Starting...
+2025-03-05T10:00:20: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:20:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:20:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:20:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:21: Next.js process exited with code 1
+2025-03-05T10:00:26:   ▲ Next.js 14.2.14
+2025-03-05T10:00:26:   - Local:        http://localhost:3000
+2025-03-05T10:00:26: 
+2025-03-05T10:00:26:  ✓ Starting...
+2025-03-05T10:00:26: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:26:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:26:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:26:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:26: Next.js process exited with code 1
+2025-03-05T10:00:29:   ▲ Next.js 14.2.14
+2025-03-05T10:00:29:   - Local:        http://localhost:3000
+2025-03-05T10:00:29: 
+2025-03-05T10:00:29:  ✓ Starting...
+2025-03-05T10:00:29: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:29:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:29:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:29:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:29: Next.js process exited with code 1
+2025-03-05T10:00:32:   ▲ Next.js 14.2.14
+2025-03-05T10:00:32:   - Local:        http://localhost:3000
+2025-03-05T10:00:32: 
+2025-03-05T10:00:32:  ✓ Starting...
+2025-03-05T10:00:32: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:32:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:32:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:32:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:32: Next.js process exited with code 1
+2025-03-05T10:00:36:   ▲ Next.js 14.2.14
+2025-03-05T10:00:36:   - Local:        http://localhost:3000
+2025-03-05T10:00:36: 
+2025-03-05T10:00:36:  ✓ Starting...
+2025-03-05T10:00:36: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:36:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:36:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:36:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:36: Next.js process exited with code 1
+2025-03-05T10:00:39:   ▲ Next.js 14.2.14
+2025-03-05T10:00:39:   - Local:        http://localhost:3000
+2025-03-05T10:00:39: 
+2025-03-05T10:00:39:  ✓ Starting...
+2025-03-05T10:00:40: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:40:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:40:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:40:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:40: Next.js process exited with code 1
+2025-03-05T10:00:42:   ▲ Next.js 14.2.14
+2025-03-05T10:00:42:   - Local:        http://localhost:3000
+2025-03-05T10:00:42: 
+2025-03-05T10:00:42:  ✓ Starting...
+2025-03-05T10:00:43: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:43:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:43:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:43:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:43: Next.js process exited with code 1
+2025-03-05T10:00:46:   ▲ Next.js 14.2.14
+2025-03-05T10:00:46:   - Local:        http://localhost:3000
+2025-03-05T10:00:46: 
+2025-03-05T10:00:46:  ✓ Starting...
+2025-03-05T10:00:46: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:46:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:46:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:46:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:46: Next.js process exited with code 1
+2025-03-05T10:00:49:   ▲ Next.js 14.2.14
+2025-03-05T10:00:49:   - Local:        http://localhost:3000
+2025-03-05T10:00:49: 
+2025-03-05T10:00:49:  ✓ Starting...
+2025-03-05T10:00:50: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:50:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:50:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:50:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:50: Next.js process exited with code 1
+2025-03-05T10:00:53:   ▲ Next.js 14.2.14
+2025-03-05T10:00:53:   - Local:        http://localhost:3000
+2025-03-05T10:00:53: 
+2025-03-05T10:00:53:  ✓ Starting...
+2025-03-05T10:00:53: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:53:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:53:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:53:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:53: Next.js process exited with code 1
+2025-03-05T10:00:56:   ▲ Next.js 14.2.14
+2025-03-05T10:00:56:   - Local:        http://localhost:3000
+2025-03-05T10:00:56: 
+2025-03-05T10:00:56:  ✓ Starting...
+2025-03-05T10:00:56: Error: Could not find a production build in the '.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+2025-03-05T10:00:56:     at setupFsCheck (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-utils\filesystem.js:151:19)
+2025-03-05T10:00:56:     at async initialize (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\router-server.js:62:23)
+2025-03-05T10:00:56:     at async Server.<anonymous> (C:\Users\Administrator\Documents\js\Anwar-Erp-Sys-SapB1-main\node_modules\next\dist\server\lib\start-server.js:249:36)
+2025-03-05T10:00:56: Next.js process exited with code 1
+2025-03-05T10:05:01:   ▲ Next.js 14.2.14
+2025-03-05T10:05:01:   - Local:        http://localhost:3000
+2025-03-05T10:05:01: 
+2025-03-05T10:05:01:  ✓ Starting...
+2025-03-05T10:05:01:  ✓ Ready in 525ms
+2025-03-06T01:50:27: Roles in context: []
+2025-03-06T01:50:32: Roles in context: []
+2025-03-06T01:50:33: Roles in context: []
+2025-03-06T01:50:33: Roles in context: []
+2025-03-06T01:50:38: Roles in context: []
+2025-03-06T01:50:39: Roles in context: []
+2025-03-06T01:50:40: Roles in context: []
+2025-03-06T01:50:40: Roles in context: []
+2025-03-06T01:50:40: Roles in context: []
+2025-03-06T08:06:32: Roles in context: []
+2025-03-06T17:18:43: Roles in context: []
+2025-03-06T20:08:40: Roles in context: []
+2025-03-08T16:19:48:   ▲ Next.js 14.2.14
+2025-03-08T16:19:48:   - Local:        http://localhost:3000
+2025-03-08T16:19:48: 
+2025-03-08T16:19:48:  ✓ Starting...
+2025-03-08T16:19:48:  ✓ Ready in 793ms
+2025-03-08T16:21:20: ^C
+2025-03-08T16:21:20: ^C
+2025-03-08T16:21:20: Next.js process exited with code 3221225786
+2025-03-08T16:21:23:   ▲ Next.js 14.2.14
+2025-03-08T16:21:23:   - Local:        http://localhost:3000
+2025-03-08T16:21:23: 
+2025-03-08T16:21:23:  ✓ Starting...
+2025-03-08T16:21:23:  ✓ Ready in 544ms
+2025-03-08T16:22:51:   ▲ Next.js 14.2.14
+2025-03-08T16:22:51:   - Local:        http://localhost:3000
+2025-03-08T16:22:51: 
+2025-03-08T16:22:51:  ✓ Starting...
+2025-03-08T16:22:52:  ✓ Ready in 501ms
+2025-03-09T00:30:25: Roles in context: []
+2025-03-09T00:30:25: Roles in context: []
+2025-03-09T00:30:26: Roles in context: []
+2025-03-09T00:30:27: Roles in context: []
+2025-03-09T00:30:28: Roles in context: []
+2025-03-09T00:30:32: Roles in context: []
+2025-03-09T00:30:32: Roles in context: []
+2025-03-09T00:30:33: Roles in context: []
+2025-03-09T00:30:36: Roles in context: []
+2025-03-09T18:20:45: Roles in context: []
+2025-03-09T18:20:46: Roles in context: []

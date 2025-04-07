@@ -18,7 +18,8 @@ const boxes = [
   // { id: 5, name: 'المخزون', icon: <MdOutlineStorage size={32} />, link: '/Storage', permission: 'Create_Storage', color: 'bg-red-100' },
   // { id: 6, name: 'المبيعات', icon: <FiPackage size={32} />, link: '/Order', permission: 'create_order', color: 'bg-teal-100' },
   // { id: 7, name: 'المشتريات', icon: <IoMdCash size={32} />, link: '/Ordercasher', permission: 'activate_order_casher', color: 'bg-indigo-100' },
-  { id: 1, name: 'كول سنتر', icon: <AiOutlineBarChart size={32} />, link: '/duedateusers', permission: 'activate_order_mm', color: 'bg-pink-100' },
+  { id: 1, name: 'الزبائن المتلكأين بغداد', icon: <AiOutlineBarChart size={32} />, link: '/duedateBaghdad', permission: 'activate_order_mm', color: 'bg-pink-100' },
+  { id: 2, name: 'الزبائن المتلكأين ديوانية', icon: <AiOutlineBarChart size={32} />, link: '/duedatedewania', permission: 'activate_order_mm', color: 'bg-pink-100' },
 ];
 
 const Page = () => {

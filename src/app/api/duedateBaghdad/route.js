@@ -3,7 +3,7 @@ import odbc from 'odbc';
 async function fetchData(query, params = []) {
   const connectionString =
     'DRIVER={HDBODBC};SERVERNODE=hanab2:30015;UID=SYSTEM;PWD=B1admin!;CHAR_AS_UTF8=1';
-
+  
   const connection = await odbc.connect(connectionString);
   const result = await connection.query(query, params);
   await connection.close();
