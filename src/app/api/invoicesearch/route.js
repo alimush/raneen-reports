@@ -3,10 +3,10 @@ import odbc from 'odbc';
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);
-    const docNum = searchParams.get('docNum');
+    const cardCode = searchParams.get('cardCode');
 
-    if (!docNum) {
-      return new Response(JSON.stringify({ error: 'Missing invoice number' }), {
+    if (!cardCode) {
+      return new Response(JSON.stringify({ error: 'Missing customer code (CardCode)' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
@@ -30,25 +30,25 @@ export async function GET(req) {
         T0."PaidToDate"
       FROM "ALUMARAH_LIVE".OINV T0
       INNER JOIN "ALUMARAH_LIVE".OCRD T1 ON T0."CardCode" = T1."CardCode"
-      WHERE T0."DocNum" = ?
+      WHERE T0."CANCELED" = 'N'
+        AND T0."CardCode" = ?
     `;
 
-    const result = await connection.query(query, [docNum]);
+    const result = await connection.query(query, [cardCode]);
 
     await connection.close();
 
-    // تنسيق البيانات للإظهار في الجدول
     const cleanedData = result.map(row => ({
-      Type: "", // فارغ
+      Type: "",
       "رقم التلفون": row.Phone1 || "",
       "رمز الساب": row.CardCode,
       "رقم الساب": row.CardCode,
       "اسم الزبون": row.CardName,
-      "الوزارة": "", // غير موجود في الجدول
-      "الدائرة": "", // غير موجود في الجدول
+      "الوزارة": "", // غير متوفر
+      "الدائرة": "", // غير متوفر
       "رقم الفاتورة": row.DocNum,
       "رقم القسط": row.Comments || "",
-      "طريقة الدفع": "", // غير موجود في الجدول
+      "طريقة الدفع": "", // غير متوفر
       "تاريخ الفاتورة": row.DocDate,
       "تاريخ الاستحقاق": "",
       "مبلغ الفاتورة": row.DocTotal || 0,
