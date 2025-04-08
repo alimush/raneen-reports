@@ -15,7 +15,6 @@ import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import Select from 'react-select';
 
-// A helper hook to detect mobile viewport
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -27,7 +26,6 @@ function useIsMobile() {
   return isMobile;
 }
 
-// Updated columns definition with all fields from the API
 const columns = [
   { label: "Type", key: "Type", width: "80px" },
   { label: "Group Name", key: "الوزارة", width: "150px" },
@@ -47,85 +45,53 @@ const columns = [
   { label: "Remaining", key: "المتبقي", width: "130px" },
 ];
 
-// Shared date formatter (formats both invoice date and due date)
 const formatDate = (dateString) => dateString ? dateString.substring(0, 10) : '';
 
-// Mobile row renderer: each field is rendered in its own block
-function MobileRowRenderer({ index, style, data }) {
+function DesktopGridHeader({ columns }) {
+  return (
+    <div className="bg-gray-100 font-medium text-gray-600"
+      style={{ display: 'grid', gridTemplateColumns: columns.map(c => c.width).join(' ') }}>
+      {columns.map((col) => (
+        <div key={col.key} className="px-4 py-3">{col.label}</div>
+      ))}
+    </div>
+  );
+}
+
+function DesktopGridRow({ index, style, data }) {
   const item = data[index];
   return (
-    <div style={style} className="p-4 border rounded-md shadow-sm bg-white mb-4">
+    <div
+      style={{ ...style, display: 'grid', gridTemplateColumns: columns.map(c => c.width).join(' ') }}
+      className="hover:bg-gray-50"
+    >
       {columns.map((col) => (
-        <div key={col.key} className="flex flex-col mb-2">
-          <span className="text-xs text-gray-500 font-bold">{col.label}</span>
-          <span className="text-sm text-gray-800">
-            {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
-              ? formatDate(item[col.key])
-              : item[col.key]}
-          </span>
+        <div key={col.key} className="px-4 py-3 whitespace-nowrap">
+          {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
+            ? formatDate(item[col.key])
+            : item[col.key]}
         </div>
       ))}
     </div>
   );
 }
 
-// Desktop row renderer: table row format
-function DesktopRowRenderer({ index, style, data }) {
-  const item = data[index];
-  return (
-    <tr style={{ ...style, display: 'table-row' }} className="hover:bg-gray-50">
-      {columns.map((col) => (
-        <td key={col.key} className="px-4 py-3 whitespace-nowrap">
-          {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
-            ? formatDate(item[col.key])
-            : item[col.key]}
-        </td>
-      ))}
-    </tr>
-  );
-}
-
-// Custom wrapper for react-window inner element in table (for desktop)
-const OuterElementType = React.forwardRef((props, ref) => (
-  <tbody ref={ref} {...props} />
-));
-OuterElementType.displayName = "OuterElementType";
-
 export default function Inventory_Report() {
   const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
   const router = useRouter();
   const isMobile = useIsMobile();
 
-  // State for filter inputs; dueDateFrom is removed.
-  const [filters, setFilters] = useState({
-    dueDateTo: '',
-    groupName: 'all',
-    u_paytype: '',
-  });
-
-  // State for unique filter options
-  const [uniqueFilters, setUniqueFilters] = useState({ groups: [], paytypes: [] });
-  // State for data results
-  const [data, setData] = useState([]);
-  const [loadingData, setLoadingData] = useState(false);
+  const [searchType, setSearchType] = useState('customer');
+  const [invoiceNumber, setInvoiceNumber] = useState('');
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [data, setData] = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
 
-  // Compute total width for desktop table by summing fixed column widths
   const totalWidth = columns.reduce((acc, col) => acc + parseInt(col.width, 10), 0);
 
-  // Fetch unique filter options on mount
   useEffect(() => {
-    axios.get('/api/list')
-      .then((response) => setUniqueFilters(response.data))
-      .catch((error) => {
-        toast.error('Error fetching filter options');
-        console.error(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios.get('/api/customersearch')  // assumes your first API is at this path
+    axios.get('/api/customersearch')
       .then((res) => setCustomers(res.data))
       .catch((err) => {
         toast.error('Error fetching customers');
@@ -133,103 +99,67 @@ export default function Inventory_Report() {
       });
   }, []);
 
+  const customerOptions = customers.map((cust) => ({
+    value: cust.CardCode,
+    label: `${cust.CardName} (${cust.CardCode})`,
+  }));
+
   const handleReturn = () => router.back();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFilters((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSearch = async () => {
-    if (!selectedCustomer) {
-      toast.error('Please select a customer.');
-      return;
-    }
     setLoadingData(true);
     try {
-      const response = await axios.get('/api/duedateDewania', {
-        params: { cardCode: selectedCustomer.CardCode }
-      });
-  
-      const cleanedData = response.data.map(item => {
-        const [docNum, comment] = item["رقم الفاتورة"]?.split("==") || ["", ""];
-  
-        return {
-          Type: "", // default
-          "رقم التلفون": "", // default
-          "رمز الساب": item["رمز الزبون"] || "",
-          "رقم الساب": item["رمز الزبون"] || "",
-          "اسم الزبون": item["اسم الزبون"] || "",
-          "الوزارة": item["الوزارة"] || "",
-          "الدائرة": item["الدائرة"] || "",
-          "رقم الفاتورة": docNum,
-          "رقم القسط": comment,
-          "طريقة الدفع": item["الدفع"] || "",
-          "تاريخ الفاتورة": item["تاريخ الفاتورة"] || "",
-          "تاريخ الاستحقاق": "", // not available
-          "مبلغ الفاتورة": "", // not available
-          "مبلغ القسط": item["مبلغ القسط"] || 0,
-          "المبلغ المدفوع": item["مبلغ الدفع"] || 0,
-          "المتبقي": item["المتبقي"] || 0,
-        };
-      });
-  
-      setData(cleanedData);
+      if (searchType === 'customer') {
+        if (!selectedCustomer) {
+          toast.error('Please select a customer.');
+          return;
+        }
+        const response = await axios.get('/api/duedateDewania', {
+          params: { cardCode: selectedCustomer.CardCode }
+        });
+
+        const cleanedData = response.data.map(item => {
+          const [docNum, comment] = item["رقم الفاتورة"]?.split("==") || ["", ""];
+          return {
+            Type: "",
+            "رقم التلفون": "",
+            "رمز الساب": item["رمز الزبون"] || "",
+            "رقم الساب": item["رمز الزبون"] || "",
+            "اسم الزبون": item["اسم الزبون"] || "",
+            "الوزارة": item["الوزارة"] || "",
+            "الدائرة": item["الدائرة"] || "",
+            "رقم الفاتورة": docNum,
+            "رقم القسط": comment,
+            "طريقة الدفع": item["الدفع"] || "",
+            "تاريخ الفاتورة": item["تاريخ الفاتورة"] || "",
+            "تاريخ الاستحقاق": "",
+            "مبلغ الفاتورة": "",
+            "مبلغ القسط": item["مبلغ القسط"] || 0,
+            "المبلغ المدفوع": item["مبلغ الدفع"] || 0,
+            "المتبقي": item["المتبقي"] || 0,
+          };
+        });
+
+        setData(cleanedData);
+      } else {
+        if (!invoiceNumber.trim()) {
+          toast.error('Please enter an invoice number.');
+          return;
+        }
+
+        const response = await axios.get('/api/invoicesearch', {
+          params: { docNum: invoiceNumber.trim() }
+        });
+
+        setData(response.data);
+      }
     } catch (err) {
-      toast.error('Error fetching invoice data');
+      toast.error('Error fetching data');
       console.error(err);
     } finally {
       setLoadingData(false);
     }
   };
-  
-  
-  
-
-  function DesktopGridHeader({ columns }) {
-    return (
-      <div
-        className="bg-gray-100 font-medium text-gray-600"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: columns.map(c => c.width).join(' '),
-        }}
-      >
-        {columns.map((col) => (
-          <div key={col.key} className="px-4 py-3">
-            {col.label}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  function DesktopGridRow({ index, style, data }) {
-    const item = data[index];
-    return (
-      <div
-        style={{
-          ...style,
-          display: 'grid',
-          gridTemplateColumns: columns.map(c => c.width).join(' '),
-        }}
-        className="hover:bg-gray-50"
-      >
-        {columns.map((col) => (
-          <div key={col.key} className="px-4 py-3 whitespace-nowrap">
-            {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
-              ? formatDate(item[col.key])
-              : item[col.key]}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  const customerOptions = customers.map((cust) => ({
-    value: cust.CardCode,
-    label: `${cust.CardName} (${cust.CardCode})`,
-  }));
 
   const exportToExcel = () => {
     if (!data.length) {
@@ -272,8 +202,6 @@ export default function Inventory_Report() {
     );
   }
 
-  
-
   if (!canCreateStorage) return <NotAuth />;
 
   return (
@@ -282,7 +210,7 @@ export default function Inventory_Report() {
       className="container mx-auto p-4 bg-gray-50 text-gray-900 min-h-screen"
     >
       <ToastContainer position="top-right" autoClose={3000} />
-      {/* Header */}
+
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
         <CustomAwesomeButton buttonType="electric" onPress={handleReturn} isRTL={true}>
           <div className="flex flex-row items-center">
@@ -292,31 +220,49 @@ export default function Inventory_Report() {
         <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">الزبائن المتلكأين بغداد</h1>
       </div>
 
-      <div className="mb-4">
-  <label className="block text-sm font-medium text-gray-700">Search Customer</label>
-  <Select
-    options={customerOptions}
-    value={selectedCustomer ? { value: selectedCustomer.CardCode, label: `${selectedCustomer.CardName} (${selectedCustomer.CardCode})` } : null}
-    onChange={(option) => {
-      if (!option) {
-        // تم الضغط على زر X
-        setSelectedCustomer(null);
-        setData([]); // تفريغ الجدول
-      } else {
-        const found = customers.find((c) => c.CardCode === option.value);
-        setSelectedCustomer(found);
-      }
-    }}    
-    placeholder="Type customer name or code..."
-    isClearable
-  />
-</div>
+      {/* البحث */}
+      <div className="mb-4 space-y-4">
+        <div className="flex space-x-4">
+          <label className="flex items-center space-x-2">
+            <input type="radio" value="customer" checked={searchType === 'customer'} onChange={() => setSearchType('customer')} />
+            <span>بحث حسب الزبون</span>
+          </label>
+          <label className="flex items-center space-x-2">
+            <input type="radio" value="invoice" checked={searchType === 'invoice'} onChange={() => setSearchType('invoice')} />
+            <span>بحث حسب الفاتورة</span>
+          </label>
+        </div>
 
-      {/* Filter Section */}
+        {searchType === 'customer' ? (
+          <Select
+            options={customerOptions}
+            value={selectedCustomer ? { value: selectedCustomer.CardCode, label: `${selectedCustomer.CardName} (${selectedCustomer.CardCode})` } : null}
+            onChange={(option) => {
+              if (!option) {
+                setSelectedCustomer(null);
+                setData([]);
+              } else {
+                const found = customers.find((c) => c.CardCode === option.value);
+                setSelectedCustomer(found);
+              }
+            }}
+            placeholder="اكتب اسم أو رمز الزبون..."
+            isClearable
+          />
+        ) : (
+          <input
+            type="text"
+            value={invoiceNumber}
+            onChange={(e) => setInvoiceNumber(e.target.value)}
+            className="w-full px-4 py-2 border rounded shadow-sm"
+            placeholder="ادخل رقم الفاتورة..."
+          />
+        )}
+      </div>
+
       <motion.div className="bg-white p-6 rounded-lg shadow-md"
         initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}
       >
-
         <div className="flex justify-end space-x-4">
           <CustomAwesomeButton buttonType="electric" onPress={handleSearch}>
             {loadingData && <FaSpinner className="animate-spin mr-2" />} Search
@@ -326,7 +272,8 @@ export default function Inventory_Report() {
           </CustomAwesomeButton>
         </div>
       </motion.div>
-      {/* Data Results Section */}
+
+      {/* النتائج */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-8">
         {loadingData ? (
           <div className="flex justify-center items-center py-12">
@@ -335,38 +282,48 @@ export default function Inventory_Report() {
         ) : (
           <Fragment>
             {data.length === 0 ? (
-              <p className="text-center text-gray-500 mt-6">No data found. Please adjust your filters.</p>
+              <p className="text-center text-gray-500 mt-6">لا توجد بيانات</p>
             ) : (
               isMobile ? (
-                // Mobile view: render a list of cards using react-window
                 <div className="space-y-4">
                   <AutoSizer>
                     {({ height, width }) => (
                       <List
                         height={height}
                         itemCount={data.length}
-                        itemSize={150} // adjusted card height for more fields
+                        itemSize={150}
                         width={width}
                         itemData={data}
                       >
-                        {MobileRowRenderer}
+                        {({ index, style }) => (
+                          <div style={style} className="p-4 border rounded-md shadow-sm bg-white mb-4">
+                            {columns.map((col) => (
+                              <div key={col.key} className="flex flex-col mb-2">
+                                <span className="text-xs text-gray-500 font-bold">{col.label}</span>
+                                <span className="text-sm text-gray-800">
+                                  {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
+                                    ? formatDate(data[index][col.key])
+                                    : data[index][col.key]}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </List>
                     )}
                   </AutoSizer>
                 </div>
               ) : (
-                // Desktop view: wrap the table in a horizontal scroll container.
                 <div className="overflow-x-auto">
                   <div className="shadow rounded-lg bg-white" style={{ minWidth: `${totalWidth}px` }}>
                     <DesktopGridHeader columns={columns} />
                     <div style={{ height: '60vh' }}>
-                      {/* Use AutoSizer to get height only */}
                       <AutoSizer disableWidth>
                         {({ height }) => (
                           <List
                             height={height}
                             itemCount={data.length}
-                            itemSize={50}  // fixed row height
+                            itemSize={50}
                             width={totalWidth}
                             itemData={data}
                           >
