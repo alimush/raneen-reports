@@ -287,7 +287,7 @@ export default function Inventory_Report() {
             <FaArrowLeft className="mr-2" /> رجوع
           </div>
         </CustomAwesomeButton>
-        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">الزبائن المتلكأين ديوانية</h1>
+        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">ذمم الفواتير ديوانية</h1>
       </div>
 
       <div className="mb-4">
