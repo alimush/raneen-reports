@@ -455,6 +455,6 @@ export default function Inventory_Report() {
           </Fragment>
         )}
       </motion.div>
-    </motion.div>
+    </motion.div> 
   );
 }
