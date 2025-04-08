@@ -27,27 +27,24 @@ function useIsMobile() {
 }
 
 const columns = [
+  { label: "Type", key: "Type", width: "80px" },
   { label: "Group Name", key: "الوزارة", width: "150px" },
   { label: "Department", key: "الدائرة", width: "150px" },
   { label: "Customer Code", key: "رمز الساب", width: "150px" },
   { label: "Customer Name", key: "اسم الزبون", width: "180px" },
+  { label: "Phone Number", key: "رقم التلفون", width: "140px" },
   { label: "Customer Number", key: "رقم الساب", width: "120px" },
   { label: "Invoice Number", key: "رقم الفاتورة", width: "140px" },
-  { label: "Installment Number", key: "رقم القسط", width: "130px" },
   { label: "Payment Type", key: "طريقة الدفع", width: "120px" },
-  { label: "Invoice Date", key: "تاريخ الفاتورة", width: "120px" },
-  { label: "Installment Amount", key: "مبلغ القسط", width: "130px" },
-  { label: "Paid Amount", key: "المبلغ المدفوع", width: "130px" },
+  { label: "Invoice Date", key: "تاريخ الفاتورة", width: "110px" },
+  { label: "Due Date", key: "تاريخ الاستحقاق", width: "110px" },
+  { label: "Installment Number", key: "رقم القسط", width: "100px" },
+  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" },
+  { label: "Installment Amount", key: "مبلغ القسط", width: "120px" },
+  { label: "Paid Amount", key: "المبلغ المدفوع", width: "120px" },
   { label: "Remaining", key: "المتبقي", width: "130px" },
-  { label: "Due Date", key: "تاريخ الاستحقاق", width: "120px" }, // فارغ حاليًا
-  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" }, // نفس مبلغ القسط مؤقتًا
 ];
 
-<<<<<<< HEAD
-
-// Shared date formatter (formats both invoice date and due date)
-=======
->>>>>>> 66076b48ac5dac9677d7eab690dbec414ab39152
 const formatDate = (dateString) => dateString ? dateString.substring(0, 10) : '';
 
 function DesktopGridHeader({ columns }) {
@@ -112,34 +109,6 @@ export default function Inventory_Report() {
   const handleSearch = async () => {
     setLoadingData(true);
     try {
-<<<<<<< HEAD
-      const response = await axios.get('/api/duedateDewania', {
-        params: { cardCode: selectedCustomer.CardCode }
-      });
-  
-      const cleanedData = response.data.map(item => {
-        const [docNum, installmentNumber] = item["رقم الفاتورة"]?.split("==") || ["", ""];
-  
-        return {
-          "الوزارة": item["الوزارة"] || "",
-          "الدائرة": item["الدائرة"] || "",
-          "رمز الساب": item["رمز الزبون"] || "",
-          "اسم الزبون": item["اسم الزبون"] || "",
-          "رقم الساب": item["رمز الزبون"] || "",
-          "رقم الفاتورة": docNum,
-          "رقم القسط": installmentNumber,
-          "طريقة الدفع": item["الدفع"] || "",
-          "تاريخ الفاتورة": item["تاريخ الفاتورة"] || "",
-          "مبلغ القسط": item["مبلغ القسط"] || 0,
-          "المبلغ المدفوع": item["مبلغ الدفع"] || 0,
-          "المتبقي": item["المتبقي"] || 0,
-          "تاريخ الاستحقاق": "",         // غير موجود في API
-          "مبلغ الفاتورة": item["مبلغ القسط"] || 0, // نفترض أن مبلغ الفاتورة = مبلغ القسط
-        };
-      });
-  
-      setData(cleanedData);
-=======
       if (searchType === 'customer') {
         if (!selectedCustomer) {
           toast.error('Please select a customer.');
@@ -178,13 +147,12 @@ export default function Inventory_Report() {
           return;
         }
 
-        const response = await axios.get('/api/invoicesearch', {
+        const response = await axios.get('/api/invoicebyid', {
           params: { docNum: invoiceNumber.trim() }
         });
 
         setData(response.data);
       }
->>>>>>> 66076b48ac5dac9677d7eab690dbec414ab39152
     } catch (err) {
       toast.error('Error fetching data');
       console.error(err);
@@ -192,58 +160,6 @@ export default function Inventory_Report() {
       setLoadingData(false);
     }
   };
-<<<<<<< HEAD
-  
-  
-  
-  
-
-  function DesktopGridHeader({ columns }) {
-    return (
-      <div
-        className="bg-gray-100 font-medium text-gray-600"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: columns.map(c => c.width).join(' '),
-        }}
-      >
-        {columns.map((col) => (
-          <div key={col.key} className="px-4 py-3">
-            {col.label}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  function DesktopGridRow({ index, style, data }) {
-    const item = data[index];
-    return (
-      <div
-        style={{
-          ...style,
-          display: 'grid',
-          gridTemplateColumns: columns.map(c => c.width).join(' '),
-        }}
-        className="hover:bg-gray-50"
-      >
-        {columns.map((col) => (
-          <div key={col.key} className="px-4 py-3 whitespace-nowrap">
-            {(col.key === "تاريخ الاستحقاق" || col.key === "تاريخ الفاتورة")
-              ? formatDate(item[col.key])
-              : item[col.key]}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  const customerOptions = customers.map((cust) => ({
-    value: cust.CardCode,
-    label: `${cust.CardName} (${cust.CardCode})`,
-  }));
-=======
->>>>>>> 66076b48ac5dac9677d7eab690dbec414ab39152
 
   const exportToExcel = () => {
     if (!data.length) {
@@ -276,15 +192,6 @@ export default function Inventory_Report() {
     saveAs(blob, `Inventory_Report_${new Date().toISOString().slice(0, 10)}.xlsx`);
   };
 
-  const customerSummary = data.length > 0 ? {
-    name: data[0]["اسم الزبون"] || "",
-    code: data[0]["رمز الساب"] || "",
-    group: data[0]["الوزارة"] || "",
-    department: data[0]["الدائرة"] || "",
-    payType: data[0]["طريقة الدفع"] || "",
-  } : null;
-  
-
   if (loadingPermission) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -310,7 +217,7 @@ export default function Inventory_Report() {
             <FaArrowLeft className="mr-2" /> رجوع
           </div>
         </CustomAwesomeButton>
-        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">الزبائن المتلكأين ديوانية</h1>
+        <h1 className="mt-4 sm:mt-0 text-2xl font-semibold">الزبائن المتلكأين بغداد</h1>
       </div>
 
       {/* البحث */}
@@ -366,30 +273,7 @@ export default function Inventory_Report() {
         </div>
       </motion.div>
 
-<<<<<<< HEAD
-      {data.length > 0 && (
-  <motion.div 
-    initial={{ y: -10, opacity: 0 }} 
-    animate={{ y: 0, opacity: 1 }} 
-    transition={{ duration: 0.3 }} 
-    className="bg-white border rounded-md shadow p-4 mb-6"
-    dir="rtl" // ⬅️ الاتجاه من اليمين لليسار
-  >
-    <h2 className="text-xl font-semibold mb-4 text-right">بيانات الزبون</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-right">
-      <div><span className="font-bold">اسم الزبون:</span> {data[0]["اسم الزبون"]}</div>
-      <div><span className="font-bold">رمز الزبون:</span> {data[0]["رمز الساب"]}</div>
-      <div><span className="font-bold">الوزارة:</span> {data[0]["الوزارة"]}</div>
-      <div><span className="font-bold">الدائرة:</span> {data[0]["الدائرة"]}</div>
-      <div><span className="font-bold">طريقة الدفع:</span> {data[0]["طريقة الدفع"]}</div>
-    </div>
-  </motion.div>
-)}
-
-      {/* Data Results Section */}
-=======
       {/* النتائج */}
->>>>>>> 66076b48ac5dac9677d7eab690dbec414ab39152
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-8">
         {loadingData ? (
           <div className="flex justify-center items-center py-12">
@@ -455,6 +339,6 @@ export default function Inventory_Report() {
           </Fragment>
         )}
       </motion.div>
-    </motion.div> 
+    </motion.div>
   );
 }
