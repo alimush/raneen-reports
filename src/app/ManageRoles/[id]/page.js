@@ -83,7 +83,9 @@ let permissionsDescriptions = {
   'Create_Box': "انشاء صندوق",
   'request_refund': "طلب استرجاع",
   'approve_refund': "موافقة استرجاع",
-  'reject_refund': "رفض الاسترجاع"
+  'reject_refund': "رفض الاسترجاع",
+  'due_date_report_baghdad': "تقرير ذمم الزبائن بغداد",
+  'due_date_report_dewania': "تقرير ذمم الزبائن ديوانية"
 };
 
 const RoleDetailPage = () => {
@@ -102,7 +104,7 @@ const RoleDetailPage = () => {
     'view_roles', 'delete_roles', 'remove_roles', 'assign_roles', 'add_role_group', 'add_roles', 'List_Admin_Users', 'Create_admin', 'Category', 'Edit_Category', 'Edit_SubCategory', 'Create_supplier', 'Search_supplier', 'View_suppliers_by_quantity', 'Define_items', 'Update_quantities', 'Search_Items', 'Update_Items',
     'Create_Storage', 'List_Storages', 'Search_Invoice', 'Search_Inv', 'create_order', 'activate_order', 'cancel_order_sales', 'Search_order', 'edit_order', 'view_order_workflow', 'activate_order_casher', 'reject_order_casher', 'handover_cashbox', 'activate_order_mm', 'cancel_order_mm',
     'Show_CashBox', 'Edit_CashBox', 'Show_Trash', 'Transfer_Trash', 'Add_Banner', 'Delete_Banner', 'Send_Notifications', 'Add_Partition', 'Reports', 'Sales_Report', 'Inventory_Report', 'Customer_Report', 'Fulfillment_Report', 'Financial_Report', 'Refund_Report', 'Box_Reports', 'Clear_Box', 'View_Boxes', 'Create_Box',
-    'request_refund', 'approve_refund', 'reject_refund'
+    'request_refund', 'approve_refund', 'reject_refund', 'due_date_report_baghdad', 'due_date_report_dewania' 
   ]);
   const [newPermission, setNewPermission] = useState('');
   const [users, setUsers] = useState([]);

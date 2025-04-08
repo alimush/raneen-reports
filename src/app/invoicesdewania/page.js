@@ -41,10 +41,9 @@ const columns = [
   { label: "Installment Amount", key: "مبلغ القسط", width: "130px" },
   { label: "Paid Amount", key: "المبلغ المدفوع", width: "130px" },
   { label: "Remaining", key: "المتبقي", width: "130px" },
-  { label: "Due Date", key: "تاريخ الاستحقاق", width: "120px" }, // فارغ حاليًا
-  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" }, // نفس مبلغ القسط مؤقتًا
+  { label: "Due Date", key: "تاريخ الاستحقاق", width: "120px" }, // Currently using installment date
+  { label: "Invoice Total", key: "مبلغ الفاتورة", width: "130px" }, // assumed same as installment amount
 ];
-
 
 // Shared date formatter (formats both invoice date and due date)
 const formatDate = (dateString) => dateString ? dateString.substring(0, 10) : '';
@@ -146,31 +145,30 @@ export default function Inventory_Report() {
     }
     setLoadingData(true);
     try {
-      const response = await axios.get('/api/duedateDewania', {
+      const response = await axios.get('/api/invoicesDewania', {
         params: { cardCode: selectedCustomer.CardCode }
       });
-  
-      const cleanedData = response.data.map(item => {
-        const [docNum, installmentNumber] = item["رقم الفاتورة"]?.split("==") || ["", ""];
-  
-        return {
-          "الوزارة": item["الوزارة"] || "",
-          "الدائرة": item["الدائرة"] || "",
-          "رمز الساب": item["رمز الزبون"] || "",
-          "اسم الزبون": item["اسم الزبون"] || "",
-          "رقم الساب": item["رمز الزبون"] || "",
-          "رقم الفاتورة": docNum,
-          "رقم القسط": installmentNumber,
-          "طريقة الدفع": item["الدفع"] || "",
-          "تاريخ الفاتورة": item["تاريخ الفاتورة"] || "",
-          "مبلغ القسط": item["مبلغ القسط"] || 0,
-          "المبلغ المدفوع": item["مبلغ الدفع"] || 0,
-          "المتبقي": item["المتبقي"] || 0,
-          "تاريخ الاستحقاق": "",         // غير موجود في API
-          "مبلغ الفاتورة": item["مبلغ القسط"] || 0, // نفترض أن مبلغ الفاتورة = مبلغ القسط
-        };
-      });
-  
+
+      // Updated data mapping without splitting "رقم الفاتورة"
+      const cleanedData = response.data.map(item => ({
+        "الوزارة": item["الوزارة"] || "",
+        "الدائرة": item["الدائرة"] || "",
+        "رمز الساب": item["رمز الزبون"] || "",
+        "اسم الزبون": item["اسم الزبون"] || "",
+        "رقم الساب": item["رقم الساب"] || "",
+        "رقم الفاتورة": item["رقم الفاتورة"] || "",
+        "رقم القسط": item["القسط"] || "",
+        "طريقة الدفع": item["الدفع"] || "",
+        "تاريخ الفاتورة": item["تاريخ الفاتورة"] || "",
+        "مبلغ القسط": item["مبلغ القسط"] || 0,
+        "المبلغ المدفوع": item["مبلغ الدفع"] || 0,
+        "المتبقي": item["المتبقي"] || 0,
+        // Using "تاريخ القسط" for Due Date so the table shows a value
+        "تاريخ الاستحقاق": item["تاريخ القسط"] || "",
+        // Assuming Invoice Total is same as Installment Amount
+        "مبلغ الفاتورة": item["مبلغ القسط"] || 0,
+      }));
+
       setData(cleanedData);
     } catch (err) {
       toast.error('Error fetching invoice data');
@@ -179,10 +177,6 @@ export default function Inventory_Report() {
       setLoadingData(false);
     }
   };
-  
-  
-  
-  
 
   function DesktopGridHeader({ columns }) {
     return (
@@ -267,7 +261,6 @@ export default function Inventory_Report() {
     department: data[0]["الدائرة"] || "",
     payType: data[0]["طريقة الدفع"] || "",
   } : null;
-  
 
   if (loadingPermission) {
     return (
@@ -278,8 +271,6 @@ export default function Inventory_Report() {
       </div>
     );
   }
-
-  
 
   if (!canCreateStorage) return <NotAuth />;
 
@@ -300,30 +291,29 @@ export default function Inventory_Report() {
       </div>
 
       <div className="mb-4">
-  <label className="block text-sm font-medium text-gray-700">Search Customer</label>
-  <Select
-    options={customerOptions}
-    value={selectedCustomer ? { value: selectedCustomer.CardCode, label: `${selectedCustomer.CardName} (${selectedCustomer.CardCode})` } : null}
-    onChange={(option) => {
-      if (!option) {
-        // تم الضغط على زر X
-        setSelectedCustomer(null);
-        setData([]); // تفريغ الجدول
-      } else {
-        const found = customers.find((c) => c.CardCode === option.value);
-        setSelectedCustomer(found);
-      }
-    }}    
-    placeholder="Type customer name or code..."
-    isClearable
-  />
-</div>
+        <label className="block text-sm font-medium text-gray-700">Search Customer</label>
+        <Select
+          options={customerOptions}
+          value={selectedCustomer ? { value: selectedCustomer.CardCode, label: `${selectedCustomer.CardName} (${selectedCustomer.CardCode})` } : null}
+          onChange={(option) => {
+            if (!option) {
+              // Clear selection
+              setSelectedCustomer(null);
+              setData([]); // Clear table
+            } else {
+              const found = customers.find((c) => c.CardCode === option.value);
+              setSelectedCustomer(found);
+            }
+          }}    
+          placeholder="Type customer name or code..."
+          isClearable
+        />
+      </div>
 
       {/* Filter Section */}
       <motion.div className="bg-white p-6 rounded-lg shadow-md"
         initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}
       >
-
         <div className="flex justify-end space-x-4">
           <CustomAwesomeButton buttonType="electric" onPress={handleSearch}>
             {loadingData && <FaSpinner className="animate-spin mr-2" />} Search
@@ -335,23 +325,23 @@ export default function Inventory_Report() {
       </motion.div>
 
       {data.length > 0 && (
-  <motion.div 
-    initial={{ y: -10, opacity: 0 }} 
-    animate={{ y: 0, opacity: 1 }} 
-    transition={{ duration: 0.3 }} 
-    className="bg-white border rounded-md shadow p-4 mb-6"
-    dir="rtl" // ⬅️ الاتجاه من اليمين لليسار
-  >
-    <h2 className="text-xl font-semibold mb-4 text-right">بيانات الزبون</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-right">
-      <div><span className="font-bold">اسم الزبون:</span> {data[0]["اسم الزبون"]}</div>
-      <div><span className="font-bold">رمز الزبون:</span> {data[0]["رمز الساب"]}</div>
-      <div><span className="font-bold">الوزارة:</span> {data[0]["الوزارة"]}</div>
-      <div><span className="font-bold">الدائرة:</span> {data[0]["الدائرة"]}</div>
-      <div><span className="font-bold">طريقة الدفع:</span> {data[0]["طريقة الدفع"]}</div>
-    </div>
-  </motion.div>
-)}
+        <motion.div 
+          initial={{ y: -10, opacity: 0 }} 
+          animate={{ y: 0, opacity: 1 }} 
+          transition={{ duration: 0.3 }} 
+          className="bg-white border rounded-md shadow p-4 mb-6"
+          dir="rtl"
+        >
+          <h2 className="text-xl font-semibold mb-4 text-right">بيانات الزبون</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-right">
+            <div><span className="font-bold">اسم الزبون:</span> {data[0]["اسم الزبون"]}</div>
+            <div><span className="font-bold">رمز الزبون:</span> {data[0]["رمز الساب"]}</div>
+            <div><span className="font-bold">الوزارة:</span> {data[0]["الوزارة"]}</div>
+            <div><span className="font-bold">الدائرة:</span> {data[0]["الدائرة"]}</div>
+            <div><span className="font-bold">طريقة الدفع:</span> {data[0]["طريقة الدفع"]}</div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Data Results Section */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-8">
@@ -365,14 +355,13 @@ export default function Inventory_Report() {
               <p className="text-center text-gray-500 mt-6">No data found. Please adjust your filters.</p>
             ) : (
               isMobile ? (
-                // Mobile view: render a list of cards using react-window
                 <div className="space-y-4">
                   <AutoSizer>
                     {({ height, width }) => (
                       <List
                         height={height}
                         itemCount={data.length}
-                        itemSize={150} // adjusted card height for more fields
+                        itemSize={150}
                         width={width}
                         itemData={data}
                       >
@@ -382,18 +371,16 @@ export default function Inventory_Report() {
                   </AutoSizer>
                 </div>
               ) : (
-                // Desktop view: wrap the table in a horizontal scroll container.
                 <div className="overflow-x-auto">
                   <div className="shadow rounded-lg bg-white" style={{ minWidth: `${totalWidth}px` }}>
                     <DesktopGridHeader columns={columns} />
                     <div style={{ height: '60vh' }}>
-                      {/* Use AutoSizer to get height only */}
                       <AutoSizer disableWidth>
                         {({ height }) => (
                           <List
                             height={height}
                             itemCount={data.length}
-                            itemSize={50}  // fixed row height
+                            itemSize={50}
                             width={totalWidth}
                             itemData={data}
                           >

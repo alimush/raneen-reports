@@ -11,15 +11,18 @@ import { MdOutlineCategory, MdOutlineStorage, MdDeleteOutline } from 'react-icon
 import { useRoles } from '../../../context/RoleContext';
 
 const boxes = [
-  // { id: 2, name: 'بطاقة الزبون', icon: <FiUsers size={32} />, link: '/Admin-users', permission: 'List_Admin_Users', color: 'bg-green-100' },
-  // { id: 4, name: 'عروض البيع', icon: <MdOutlineCategory size={32} />, link: '/allquatos', permission: 'Create_supplier', color: 'bg-purple-100' },
   // { id: 4, name: 'اوامر البيع', icon: <MdOutlineCategory size={32} />, link: '/invoices', permission: 'Create_supplier', color: 'bg-purple-100' },
   // { id: 4, name: 'الانتاج', icon: <MdOutlineCategory size={32} />, link: '/Suppliers', permission: 'Create_supplier', color: 'bg-purple-100' },
   // { id: 5, name: 'المخزون', icon: <MdOutlineStorage size={32} />, link: '/Storage', permission: 'Create_Storage', color: 'bg-red-100' },
   // { id: 6, name: 'المبيعات', icon: <FiPackage size={32} />, link: '/Order', permission: 'create_order', color: 'bg-teal-100' },
   // { id: 7, name: 'المشتريات', icon: <IoMdCash size={32} />, link: '/Ordercasher', permission: 'activate_order_casher', color: 'bg-indigo-100' },
-  { id: 1, name: 'الزبائن المتلكأين بغداد', icon: <AiOutlineBarChart size={32} />, link: '/duedateBaghdad', permission: 'activate_order_mm', color: 'bg-pink-100' },
-  { id: 2, name: 'الزبائن المتلكأين ديوانية', icon: <AiOutlineBarChart size={32} />, link: '/duedatedewania', permission: 'activate_order_mm', color: 'bg-pink-100' },
+  { id: 1, name: 'الزبائن المتلكأين بغداد', icon: <AiOutlineBarChart size={32} />, link: '/duedateBaghdad', permission: 'due_date_report_baghdad', color: 'bg-pink-100' },
+  { id: 2, name: 'الزبائن المتلكأين ديوانية', icon: <AiOutlineBarChart size={32} />, link: '/duedatedewania', permission: 'due_date_report_dewania', color: 'bg-pink-100' },
+  { id: 3, name: 'اليوزرية', icon: <FiUsers size={32} />, link: '/Admin-users', permission: 'List_Admin_Users', color: 'bg-green-100' },
+  { id: 4, name: 'الصلاحيات', icon: <FiUsers size={32} />, link: '/Role', permission: 'view_roles', color: 'bg-green-100' },
+  { id: 5, name: 'ذمم الفواتير ديوانية', icon: <AiOutlineBarChart size={32} />, link: '/invoicesdewania', permission: 'invoices_report_dewania', color: 'bg-pink-100' },
+  { id: 6, name: 'ذمم الفواتير بغداد', icon: <AiOutlineBarChart size={32} />, link: '/invoicesbaghdad', permission: 'invoices_report_baghdad', color: 'bg-pink-100' },
+  // { id: 4, name: 'عروض البيع', icon: <MdOutlineCategory size={32} />, link: '/allquatos', permission: 'Create_supplier', color: 'bg-purple-100' },
 ];
 
 const Page = () => {
