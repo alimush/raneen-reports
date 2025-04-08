@@ -90,7 +90,7 @@ const OuterElementType = React.forwardRef((props, ref) => (
 OuterElementType.displayName = "OuterElementType";
 
 export default function Inventory_Report() {
-  const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
+  const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('invoices_report_dewania');
   const router = useRouter();
   const isMobile = useIsMobile();
 

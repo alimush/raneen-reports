@@ -92,7 +92,7 @@ const OuterElementType = React.forwardRef((props, ref) => (
 OuterElementType.displayName = "OuterElementType";
 
 export default function Inventory_Report() {
-  const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('Inventory_Report');
+  const { hasPermission: canCreateStorage, loading: loadingPermission } = usePermission('due_date_report_dewania');
   const router = useRouter();
   const isMobile = useIsMobile();
 
@@ -328,6 +328,25 @@ export default function Inventory_Report() {
       </motion.div>
       {/* Data Results Section */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="mt-8">
+      {data.length > 0 && (
+  <motion.div 
+    initial={{ y: -10, opacity: 0 }} 
+    animate={{ y: 0, opacity: 1 }} 
+    transition={{ duration: 0.3 }} 
+    className="bg-white border rounded-md shadow p-4 mb-6"
+    dir="rtl"
+  >
+    <h2 className="text-xl font-semibold mb-4 text-right">بيانات الزبون</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-right">
+      <div><span className="font-bold">اسم الزبون:</span> {data[0]["اسم الزبون"]}</div>
+      <div><span className="font-bold">رمز الزبون:</span> {data[0]["رمز الساب"]}</div>
+      <div><span className="font-bold">الوزارة:</span> {data[0]["الوزارة"]}</div>
+      <div><span className="font-bold">الدائرة:</span> {data[0]["الدائرة"]}</div>
+      <div><span className="font-bold">طريقة الدفع:</span> {data[0]["طريقة الدفع"]}</div>
+    </div>
+  </motion.div>
+)}
+
         {loadingData ? (
           <div className="flex justify-center items-center py-12">
             <FaSpinner className="animate-spin text-4xl text-blue-500" />
