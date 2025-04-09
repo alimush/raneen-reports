@@ -22,3 +22,8 @@ it should be like this
         INNER JOIN "ALUMARAH_LIVE"."OCRD" T1 ON T1."CardCode" = T0."CardCode"
 
 so all sql query should add to it the db name like the structure above
+
+you can see all sql querys via this link below
+
+https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvYy80MjMzMmQ4OTNjYWU5ZWNlL0Vqc2VtdWh1LTZKRXV6bG13QnJkdkZrQnNreHFPdkViQW8zb2ZQNUhiZkpIRlE%5FZT1FQ3JXZHg&id=42332D893CAE9ECE%21se89a1e3bfb6e44a2bb3966c01addbc59&cid=42332D893CAE9ECE
+
