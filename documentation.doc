@@ -1,0 +1,24 @@
+anwar alemara portal report
+
+we are using odbc library for make the connection with sap b1
+
+here is the connection credential
+connectionString =
+    'DRIVER={HDBODBC};SERVERNODE=hanab2:30015;UID=SYSTEM;PWD=B1admin!;CHAR_AS_UTF8=1';
+
+you can see an ex how the connection made via src/api/duedateusers 
+
+if you are facing an issue in the sql query when try to get data you should add to the sql 
+the db name beside each for ex
+
+this way not acceptable
+
+    FROM "ORCT" T0
+        INNER JOIN "OCRD" T1 ON T1."CardCode" = T0."CardCode"
+
+it should be like this 
+
+   FROM "ALUMARAH_LIVE"."ORCT" T0
+        INNER JOIN "ALUMARAH_LIVE"."OCRD" T1 ON T1."CardCode" = T0."CardCode"
+
+so all sql query should add to it the db name like the structure above
