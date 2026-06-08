@@ -8,6 +8,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import { RoleProvider } from '../../context/RoleContext';
 import { PermissionProvider } from '../../context/PermissionContext';
 import Layout from './components/NavBar';
+import AuthGuard from './components/AuthGuard';
 import { Pacifico } from 'next/font/google';
 
 const pacifico = Pacifico({
@@ -45,6 +46,7 @@ export const useNavigation = () => {
 const RootLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
+  const isLoginPage = pathname === '/';
   const loadingTimeoutRef = useRef(null);
 
   const startLoading = useCallback(() => {
@@ -92,9 +94,13 @@ const RootLayout = ({ children }) => {
             >
               <RoleProvider>
                 <PermissionProvider>
-                <Layout>
-              {children}
-              </Layout>
+                  <AuthGuard>
+                    {pathname === "/" ? (
+                      children
+                    ) : (
+                      <Layout>{children}</Layout>
+                    )}
+                  </AuthGuard>
                 </PermissionProvider>
               </RoleProvider>
             </motion.div>
